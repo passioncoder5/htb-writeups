@@ -1,8 +1,3 @@
----
-layout: default
-title: Home
----
-
 <div class="theme-toggle">
     <button onclick="toggleTheme()">Toggle Dark Mode</button>
 </div>
