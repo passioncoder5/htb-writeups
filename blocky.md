@@ -1,7 +1,3 @@
-<div class="theme-toggle">
-    <button onclick="toggleTheme()">Toggle Dark Mode</button>
-</div>
-
 # Blocky HTB Writeup
 
 ## Reconnaissance
