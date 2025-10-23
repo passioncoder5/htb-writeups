@@ -127,7 +127,7 @@ http://popcorn.htb/torrent/upload/920dcb9268b2e20fbe0f0bd9a4de82188ce28033.php?c
 - User: `www-data`
 - Privileges: Web application context
 
-  <img width="792" height="365" alt="image" src="https://github.com/user-attachments/assets/92ab218f-b485-443e-bd7e-2dbf14524529" />
+<img width="792" height="365" alt="image" src="https://github.com/user-attachments/assets/92ab218f-b485-443e-bd7e-2dbf14524529" />
 
 
 ## Post-Exploitation
@@ -258,10 +258,7 @@ cat /root/root.txt
 - **Custom PHP Web Shell**: File upload bypass
 
 ---
-<div align="center">
 
 **Penetration Test Report** | **Popcorn HTB** | **Critical Severity**
-
-</div>
 
 ---
