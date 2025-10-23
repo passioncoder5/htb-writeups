@@ -1,7 +1,5 @@
 # Blocky HTB Writeup
 
-![Blocky Logo](https://via.placeholder.com/150x150/000000/FFFFFF?text=BLOCKY)
-
 ## Reconnaissance
 
 ### Initial Enumeration
