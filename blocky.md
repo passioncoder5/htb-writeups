@@ -5,7 +5,6 @@
 ### Initial Enumeration
 
 The penetration testing began with network reconnaissance to identify open ports and services.
-
 ```bash
 export target=10.129.48.128
 ```
@@ -27,6 +26,7 @@ sudo nmap -p 21,22,80,25565 -sC -sV -T4 $target
 <img width="841" height="392" alt="image" src="https://github.com/user-attachments/assets/8099989c-e815-4e88-9fbc-b9d6f4ced3ea" />
 
 ### DNS Configuration
+
 Added the hostname to the local hosts file for proper web application testing:
 ```bash
 echo "10.129.48.128 blocky.htb" | sudo tee -a /etc/hosts
@@ -38,15 +38,21 @@ echo "10.129.48.128 blocky.htb" | sudo tee -a /etc/hosts
 ## Web Application Assessment
 
 ### Directory Bruteforcing
+
 Conducted comprehensive directory enumeration using Gobuster:
 ```bash
 gobuster dir -u http://blocky.htb -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,txt,html -t 100 -b "302"
 ```
-Also you can use dirbuster
+
+####Also you can use dirbuster
+
+
 <img width="770" height="563" alt="image" src="https://github.com/user-attachments/assets/c43cec07-7abb-438e-9de9-e0ccc240a5c3" />
+
 <img width="770" height="563" alt="image" src="https://github.com/user-attachments/assets/62cee60e-eb34-4759-b6e2-18efa3d1f720" />
 
 ### Critical Discovery
+
 The `/plugins/` directory was identified as particularly interesting, containing Java archive files:
 - `BlockyCore.jar`
 - `griefprevention-1.12.2-4.3.0.660.jar`
@@ -55,6 +61,7 @@ The `/plugins/` directory was identified as particularly interesting, containing
 
 
 ### Source Code Analysis
+
 Using **jadx-gui**, the `BlockyCore.jar` file was decompiled, revealing hardcoded database credentials:
 
 <img width="1046" height="508" alt="image" src="https://github.com/user-attachments/assets/958b8ef7-d441-4cb7-9237-3fcc5180f6a5" />
@@ -65,6 +72,7 @@ Using **jadx-gui**, the `BlockyCore.jar` file was decompiled, revealing hardcode
 - **Password:** `8YsqfCTnvxAUeduzjNSXe22`
 
 ### User Enumeration
+
 Additional reconnaissance uncovered potential usernames:
 - Visiting `http://blocky.htb/index.php/author/notch/` revealed user "notch"
 - Source code analysis confirmed both "notch" and "root" as valid users
@@ -72,6 +80,7 @@ Additional reconnaissance uncovered potential usernames:
 ## Initial Access
 
 ### Credential Validation
+
 Verified SSH credentials using CrackMapExec:
 ```bash
 crackmapexec ssh 10.129.48.128 -u users.txt -p pass.txt
@@ -81,6 +90,7 @@ crackmapexec ssh 10.129.48.128 -u users.txt -p pass.txt
 
 
 ### Successful Authentication
+
 Gained initial access via SSH using discovered credentials:
 ```bash
 ssh notch@10.129.48.174
@@ -92,6 +102,7 @@ ssh notch@10.129.48.174
 ## Privilege Escalation
 
 ### Privilege Assessment
+
 Checked sudo permissions for the notch user:
 ```bash
 sudo -l
@@ -101,6 +112,7 @@ sudo -l
 
 
 ### Root Access Acquisition
+
 The notch user had extensive sudo privileges, allowing direct elevation to root:
 ```bash
 sudo su
@@ -167,8 +179,6 @@ cat /root/root.txt
 - **CrackMapExec**: Credential validation
 - **SSH**: Remote access
 
-<div align="center">
-  
+
 **Penetration Testing Report** | **Blocky HTB** | **High Severity**
   
-</div>
