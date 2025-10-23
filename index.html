@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTB Writeups - Security Research Portfolio</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --dark-bg: #0d1117;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #ffffff;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(13, 17, 23, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23e94560" fill-opacity="0.05" points="0,1000 1000,0 1000,1000"/></svg>');
+            padding: 120px 0;
+            margin-bottom: 80px;
+            border-radius: 0 0 50px 50px;
+        }
+
+        .writeup-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .writeup-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--highlight);
+            box-shadow: 0 20px 40px rgba(233, 69, 96, 0.2);
+        }
+
+        .card-header {
+            background: linear-gradient(90deg, var(--highlight), #ff6b9d);
+            border-bottom: none;
+            padding: 1.5rem;
+        }
+
+        .difficulty-badge {
+            font-size: 0.8rem;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(233, 69, 96, 0.2);
+            border: 1px solid rgba(233, 69, 96, 0.4);
+            border-radius: 15px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+        }
+
+        .stats-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--highlight), #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .btn-custom {
+            background: linear-gradient(45deg, var(--highlight), #ff6b9d);
+            border: none;
+            border-radius: 10px;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .footer {
+            background: var(--dark-bg);
+            border-top: 1px solid rgba(233, 69, 96, 0.3);
+            margin-top: 100px;
+        }
+
+        .machine-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--highlight), #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        /* Animation delays */
+        .animate-delay-1 { animation-delay: 0.1s; }
+        .animate-delay-2 { animation-delay: 0.2s; }
+        .animate-delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand gradient-text fw-bold" href="#">
+                <i class="bi bi-shield-shaded me-2"></i>HTB Writeups
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#writeups">Writeups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">
+                        HTB Writeups Portfolio
+                    </h1>
+                    <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+                        Professional penetration testing reports and security research from HackTheBox machines. 
+                        Detailed analysis of vulnerabilities, exploitation techniques, and mitigation strategies.
+                    </p>
+                    <a href="#writeups" class="btn btn-custom btn-lg animate__animated animate__fadeInUp animate__delay-2s">
+                        <i class="bi bi-arrow-down me-2"></i>Explore Writeups
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Writeups Section -->
+    <section id="writeups" class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="display-4 fw-bold gradient-text mb-3">Machine Writeups</h2>
+                    <p class="lead">Detailed walkthroughs of HackTheBox machine solutions</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Blocky Writeup -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="writeup-card animate__animated animate__fadeInLeft animate-delay-1">
+                        <div class="card-header text-white text-center">
+                            <div class="machine-icon">
+                                <i class="bi bi-server"></i>
+                            </div>
+                            <h4 class="mb-0">Blocky</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <span class="difficulty-badge bg-success text-white">Easy</span>
+                            </div>
+                            <p class="card-text mb-4">
+                                A Linux machine focusing on web application security, source code analysis, 
+                                and privilege escalation through Java application vulnerabilities and misconfigured permissions.
+                            </p>
+                            <div class="mb-4">
+                                <span class="tech-tag d-inline-block">Web Security</span>
+                                <span class="tech-tag d-inline-block">Java</span>
+                                <span class="tech-tag d-inline-block">SSH</span>
+                                <span class="tech-tag d-inline-block">Privilege Escalation</span>
+                            </div>
+                            <div class="text-center">
+                                <a href="https://passioncoder5.github.io/htb-writeups/blocky" 
+                                   class="btn btn-custom w-100" target="_blank">
+                                    <i class="bi bi-book me-2"></i>Read Writeup
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popcorn Writeup -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="writeup-card animate__animated animate__fadeInUp animate-delay-2">
+                        <div class="card-header text-white text-center">
+                            <div class="machine-icon">
+                                <i class="bi bi-hdd-stack"></i>
+                            </div>
+                            <h4 class="mb-0">Popcorn</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <span class="difficulty-badge bg-warning text-dark">Medium</span>
+                            </div>
+                            <p class="card-text mb-4">
+                                Features file upload vulnerabilities leading to remote code execution, 
+                                and PAM-based privilege escalation exploiting MOTD configuration vulnerabilities.
+                            </p>
+                            <div class="mb-4">
+                                <span class="tech-tag d-inline-block">File Upload</span>
+                                <span class="tech-tag d-inline-block">RCE</span>
+                                <span class="tech-tag d-inline-block">PAM</span>
+                                <span class="tech-tag d-inline-block">CVE-2010-0832</span>
+                            </div>
+                            <div class="text-center">
+                                <a href="https://passioncoder5.github.io/htb-writeups/popcorn" 
+                                   class="btn btn-custom w-100" target="_blank">
+                                    <i class="bi bi-book me-2"></i>Read Writeup
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coming Soon -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="writeup-card animate__animated animate__fadeInRight animate-delay-3">
+                        <div class="card-header text-white text-center">
+                            <div class="machine-icon">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <h4 class="mb-0">Coming Soon</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="text-center mb-3">
+                                <span class="difficulty-badge bg-danger text-white">Hard</span>
+                            </div>
+                            <p class="card-text mb-4">
+                                More HackTheBox machine writeups are in progress. Stay tuned for advanced 
+                                exploitation techniques, kernel exploits, and complex Active Directory attacks.
+                            </p>
+                            <div class="mb-4">
+                                <span class="tech-tag d-inline-block">Advanced</span>
+                                <span class="tech-tag d-inline-block">Kernel Exploits</span>
+                                <span class="tech-tag d-inline-block">Active Directory</span>
+                            </div>
+                            <div class="text-center">
+                                <a href="#" class="btn btn-secondary w-100 disabled">
+                                    <i class="bi bi-hourglass-split me-2"></i>Coming Soon
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="stats" class="py-5 my-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stats-card">
+                        <span class="stat-number">2</span>
+                        <p class="mb-0">Machines Completed</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-card">
+                        <span class="stat-number">100%</span>
+                        <p class="mb-0">Success Rate</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-card">
+                        <span class="stat-number">5+</span>
+                        <p class="mb-0">Vulnerabilities Found</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-card">
+                        <span class="stat-number">∞</span>
+                        <p class="mb-0">Knowledge Gained</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h5 class="gradient-text mb-3">HTB Writeups Portfolio</h5>
+                    <p class="mb-3">Professional security research and penetration testing documentation</p>
+                    <div class="mb-3">
+                        <a href="#" class="text-white me-3"><i class="bi bi-github fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-linkedin fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter fs-5"></i></a>
+                    </div>
+                    <p class="text-muted mb-0">
+                        &copy; <span id="currentYear"></span> Security Research Portfolio. Made with ❤️ for the infosec community.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Update current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(13, 17, 23, 0.98) !important';
+            } else {
+                navbar.style.background = 'rgba(13, 17, 23, 0.95) !important';
+            }
+        });
+    </script>
+</body>
+</html>
