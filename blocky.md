@@ -44,7 +44,7 @@ Conducted comprehensive directory enumeration using Gobuster:
 gobuster dir -u http://blocky.htb -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,txt,html -t 100 -b "302"
 ```
 
-####Also you can use dirbuster
+### Also you can use dirbuster
 
 
 <img width="770" height="563" alt="image" src="https://github.com/user-attachments/assets/c43cec07-7abb-438e-9de9-e0ccc240a5c3" />
