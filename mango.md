@@ -284,11 +284,3 @@ cat /root/root.txt
 ---
 
 *This walkthrough is for educational purposes only. Always ensure you have proper authorization before testing security vulnerabilities.*
-
-<style>
-body {
-    background-color: #000000;
-    color: #ffffff;
-    font-family: 'Courier New', monospace;
-}
-</style>
