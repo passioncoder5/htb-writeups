@@ -324,3 +324,11 @@ cat /root/root.txt
 **Penetration Test Report** | **Magic HTB** | **Critical Severity**
 
 ---
+
+<style>
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+}
+</style>
