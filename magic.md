@@ -325,10 +325,3 @@ cat /root/root.txt
 
 ---
 
-<style>
-body {
-    background-color: #000000;
-    color: #ffffff;
-    font-family: 'Courier New', monospace;
-}
-</style>
