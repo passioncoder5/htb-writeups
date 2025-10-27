@@ -324,4 +324,3 @@ cat /root/root.txt
 **Penetration Test Report** | **Magic HTB** | **Critical Severity**
 
 ---
-
