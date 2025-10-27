@@ -216,11 +216,3 @@ cat /root/root.txt
 ---
 
 *This walkthrough is for educational purposes only. Always ensure you have proper authorization before conducting penetration testing activities.*
-
-<style>
-body {
-    background-color: #000000;
-    color: #ffffff;
-    font-family: 'Courier New', monospace;
-}
-</style>
