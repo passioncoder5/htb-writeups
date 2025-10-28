@@ -1,13 +1,5 @@
-<img width="809" height="295" alt="image" src="https://github.com/user-attachments/assets/d945a081-93cb-451e-ab3e-9bd9764f4dc1" /># Celestial HTB Walkthrough
+# Celestial HTB Walkthrough
 A comprehensive penetration testing walkthrough of the Celestial HTB machine demonstrating advanced exploitation techniques including Node.js deserialization attacks and privilege escalation through cron job manipulation.
-
-## 📋 Table of Contents
-- [Executive Summary](#executive-summary)
-- [Reconnaissance](#reconnaissance)
-- [Vulnerability Analysis](#vulnerability-analysis)
-- [Initial Exploitation](#initial-exploitation)
-- [Privilege Escalation](#privilege-escalation)
-- [Lessons Learned](#lessons-learned)
 
 ## 🎯 Executive Summary
 
@@ -270,13 +262,15 @@ cat /root/root.txt
 
 ### Tools Used
 
-| Tool | Purpose |
-|------|---------|
-| Nmap | Network reconnaissance |
-| Burp Suite | Web application analysis |
-| Node.js | Payload generation |
-| Netcat | Reverse shell handling |
-| Python HTTP Server | Payload hosting |
+* **Nmap**: Network reconnaissance and service enumeration.
+* **Burp Suite**: Web application analysis, intercepting/modifying requests and cookie manipulation for testing auth & session flows.
+* **Node.js**: Runtime for building and running payloads, custom exploit servers, and serialization/deserialization test harnesses.
+* **Netcat**: Lightweight TCP/UDP listener and reverse/forward shell handler for debugging and pivoting.
+* **Python HTTP Server**: Quick payload hosting and simple file transfer (one-liner static file server).
+* **node-serialize (library)**: JavaScript object serialization/deserialization used to craft exploit payloads against insecure deserializers.
+* **nodejsshell.py**: (utility) generator/launcher for Node.js-compatible reverse shell payloads — useful for creating and testing callbacks.
+
+
 
 ## 🔒 Security Recommendations
 
