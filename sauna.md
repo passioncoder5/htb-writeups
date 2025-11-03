@@ -1,4 +1,4 @@
-<img width="721" height="171" alt="image" src="https://github.com/user-attachments/assets/726a2e75-d71f-4c84-9998-de6d688858ce" /># Sauna HTB - Penetration Test Report
+# Sauna HTB
 
 ## Executive Summary
 
