@@ -3,8 +3,6 @@
 ## Overview
 This document details the complete penetration testing process for the SAU machine, covering reconnaissance, vulnerability assessment, exploitation, and post-exploitation leading to root access.
 
-![HTB](https://img.shields.io/badge/Platform-HackTheBox-red) ![Difficulty](https://img.shields.io/badge/Difficulty-Easy-green) ![OS](https://img.shields.io/badge/OS-Linux-blue)
-
 ## Reconnaissance
 
 ### Initial Scanning
