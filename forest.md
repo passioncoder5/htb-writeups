@@ -3,8 +3,7 @@
 **Machine**: Forest  
 **Platform**: HackTheBox  
 **Difficulty**: Medium  
-**OS**: Windows  
-**Points**: 20  
+**OS**: Windows   
 
 ## Reconnaissance
 
