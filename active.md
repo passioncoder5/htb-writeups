@@ -25,11 +25,14 @@ sudo nmap -p- --min-rate 1000 -sT -vvv $target
 sudo nmap -sC -sV -p 53,88,135,139,445,464,539,636,3268,3269,5722,9389,47001,49152,49153,49154,49155,49157,49158,49162,49167,49168 -T4 $target
 ```
 
-<img width="307" height="98" alt="image" src="https://github.com/user-attachments/assets/0dcf1fb0-c01c-410d-9870-7f22820aa947" />
+<img width="307" height="98" alt="image" src="https://github.com/user-attachments/assets/0dcf1fb0-c01c-410d-9870-7f22820aa947?raw=1
+" />
 
-<img width="523" height="595" alt="image" src="https://github.com/user-attachments/assets/1221ba36-b85b-46e4-9afb-18e16519f434" />
+<img width="523" height="595" alt="image" src="https://github.com/user-attachments/assets/1221ba36-b85b-46e4-9afb-18e16519f434?raw=1
+" />
 
-<img width="953" height="864" alt="image" src="https://github.com/user-attachments/assets/bf823f84-f17c-4f93-b2cc-bcd448c3510e" />
+<img width="953" height="864" alt="image" src="https://github.com/user-attachments/assets/bf823f84-f17c-4f93-b2cc-bcd448c3510e?raw=1
+" />
 
 **Port Scan Results:**
 ```
