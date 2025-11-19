@@ -9,21 +9,21 @@ The penetration testing began with network reconnaissance to identify open ports
 export target=10.129.48.128
 ```
 
-<img width="486" height="105" alt="image" src="https://github.com/user-attachments/assets/bf85c074-44b4-4342-b167-ab5085ea5b18" />
+<img width="486" height="105" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
 #### Comprehensive Port Scan
 ```bash
 sudo nmap -p- --min-rate 5000 -sT -vvv $target
 ```
 
-<img width="791" height="951" alt="image" src="https://github.com/user-attachments/assets/69278595-a225-4e3d-8805-41faa1778c17" />
+<img width="791" height="951" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 #### Targeted Service Enumeration
 ```bash
 sudo nmap -p 21,22,80,25565 -sC -sV -T4 $target
 ```
 
-<img width="841" height="392" alt="image" src="https://github.com/user-attachments/assets/8099989c-e815-4e88-9fbc-b9d6f4ced3ea" />
+<img width="841" height="392" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 ### DNS Configuration
 
@@ -32,7 +32,7 @@ Added the hostname to the local hosts file for proper web application testing:
 echo "10.129.48.128 blocky.htb" | sudo tee -a /etc/hosts
 ```
 
-<img width="577" height="235" alt="image" src="https://github.com/user-attachments/assets/ab54012c-9890-495d-b549-ab716f6fa9ae" />
+<img width="577" height="235" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 
 ## Web Application Assessment
@@ -47,9 +47,9 @@ gobuster dir -u http://blocky.htb -w /usr/share/wordlists/dirbuster/directory-li
 ### Also you can use dirbuster
 
 
-<img width="770" height="563" alt="image" src="https://github.com/user-attachments/assets/c43cec07-7abb-438e-9de9-e0ccc240a5c3" />
+<img width="770" height="563" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
-<img width="770" height="563" alt="image" src="https://github.com/user-attachments/assets/62cee60e-eb34-4759-b6e2-18efa3d1f720" />
+<img width="770" height="563" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 ### Critical Discovery
 
@@ -57,14 +57,14 @@ The `/plugins/` directory was identified as particularly interesting, containing
 - `BlockyCore.jar`
 - `griefprevention-1.12.2-4.3.0.660.jar`
 
-<img width="1251" height="488" alt="image" src="https://github.com/user-attachments/assets/3082d560-6211-4f20-b317-e9dc12cc9204" />
+<img width="1251" height="488" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 
 ### Source Code Analysis
 
 Using **jadx-gui**, the `BlockyCore.jar` file was decompiled, revealing hardcoded database credentials:
 
-<img width="1046" height="508" alt="image" src="https://github.com/user-attachments/assets/958b8ef7-d441-4cb7-9237-3fcc5180f6a5" />
+<img width="1046" height="508" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 
 **Credentials Found:**
@@ -86,7 +86,7 @@ Verified SSH credentials using CrackMapExec:
 crackmapexec ssh 10.129.48.128 -u users.txt -p pass.txt
 ```
 
-<img width="954" height="483" alt="image" src="https://github.com/user-attachments/assets/36883438-1cf1-4229-a43e-375178651fc2" />
+<img width="954" height="483" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 
 ### Successful Authentication
@@ -96,7 +96,7 @@ Gained initial access via SSH using discovered credentials:
 ssh notch@10.129.48.174
 ```
 
-<img width="963" height="492" alt="image" src="https://github.com/user-attachments/assets/e7f1281c-f400-4463-afcc-482c4372a0e4" />
+<img width="963" height="492" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 
 ## Privilege Escalation
@@ -108,7 +108,7 @@ Checked sudo permissions for the notch user:
 sudo -l
 ```
 
-<img width="946" height="267" alt="image" src="https://github.com/user-attachments/assets/84511c44-cb3b-47fd-8586-6af73813c652" />
+<img width="946" height="267" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 
 ### Root Access Acquisition
@@ -118,7 +118,7 @@ The notch user had extensive sudo privileges, allowing direct elevation to root:
 sudo su
 ```
 
-<img width="739" height="698" alt="image" src="https://github.com/user-attachments/assets/b9766075-04a1-49f9-adec-efb9284932dc" />
+<img width="739" height="698" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 ## Post-Exploitation
 

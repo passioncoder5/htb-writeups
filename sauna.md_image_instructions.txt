@@ -1,0 +1,101 @@
+IMAGE UPLOAD INSTRUCTIONS for htb-writeups/sauna.md
+==================================================
+
+STEPS:
+1. Go to https://imgur.com/upload
+2. Upload each image below
+3. Copy the direct image URL (right-click → 'Copy image address')
+4. Replace the placeholder URLs in the markdown file
+
+IMAGE MAPPING:
+------------------------------
+
+IMAGE 1:
+Original: https://github.com/user-attachments/assets/8617b1fb-cce7-4ee1-9458-45ee2ac2a532
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 2:
+Original: https://github.com/user-attachments/assets/c9a23630-58a1-485c-b0d8-9f20cb28fb2b
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 3:
+Original: https://github.com/user-attachments/assets/90a42bfc-03b3-4ca5-b155-cf628fdf47d6
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 4:
+Original: https://github.com/user-attachments/assets/19fc477f-4240-4018-8d9b-88a407797007
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 5:
+Original: https://github.com/user-attachments/assets/9a435c60-294a-4286-a550-12fea98fa489
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 6:
+Original: https://github.com/user-attachments/assets/6ba45b38-0dd0-42fb-b7ab-39e9851595a1
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 7:
+Original: https://github.com/user-attachments/assets/b5b6bf33-b8bc-4c1d-8b4b-c25122e3b9f2
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 8:
+Original: https://github.com/user-attachments/assets/09da19d4-d0d0-4c2b-b53a-98d50daf6618
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 9:
+Original: https://github.com/user-attachments/assets/c48206bc-6c47-4a9d-8866-5ebd249e58cb
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 10:
+Original: https://github.com/user-attachments/assets/fe9b38f3-c584-429c-9025-d24e0f4c8e2c
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 11:
+Original: https://github.com/user-attachments/assets/b4d49489-1ee3-4bf1-834b-6776e78203ec
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 12:
+Original: https://github.com/user-attachments/assets/33fbb8b2-ca99-48c9-98b4-7dab83af01d2
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 13:
+Original: https://github.com/user-attachments/assets/f3b2ddc6-d680-4749-a599-97f7dbd13ee2
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 14:
+Original: https://github.com/user-attachments/assets/c34f5c9b-1f02-4631-ba3e-3bab998d6b5f
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 15:
+Original: https://github.com/user-attachments/assets/c7460433-c409-4631-a780-701717d6e54e
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 16:
+Original: https://github.com/user-attachments/assets/bd687cce-5e00-4592-9824-55f84ee5446f
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 17:
+Original: https://github.com/user-attachments/assets/4d7068f0-ed2a-4408-a4ce-dd1242500a9c
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]
+
+IMAGE 18:
+Original: https://github.com/user-attachments/assets/74efc4f4-ff03-4fd8-8e9c-eeca5d3f03ef
+Replace:  https://placehold.co/600x400/EEE/31343C?text=Image-18-Upload-To-Imgur
+With:     [YOUR_IMGUR_URL_HERE]

